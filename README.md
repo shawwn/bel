@@ -2019,8 +2019,8 @@ returns the name of a sign represented by a symbol:
 plus
 ```
 
-The `iflet` macro lets you use the result of a test in an `if`. It works 
-like an ordinary `if`, except that it takes an initial variable, which
+The [`iflet`](./bel.bel#:~:text=%20iflet%20) macro lets you use the result of a test in an [`if`](./bel.bel#:~:text=%20if%20). It works 
+like an ordinary [`if`](./bel.bel#:~:text=%20if%20), except that it takes an initial variable, which
 in any then expression will be lexically bound to the value returned 
 by the preceding test expression.
 
@@ -2031,11 +2031,11 @@ by the preceding test expression.
 a
 ```
 
-Notice how similar the definitions of `case` and `iflet` are, despite 
-their different purposes. They're both recursive macros, like `or`, 
+Notice how similar the definitions of [`case`](./bel.bel#:~:text=%20case%20) and [`iflet`](./bel.bel#:~:text=%20iflet%20) are, despite 
+their different purposes. They're both recursive macros, like [`or`](./bel.bel#:~:text=%20or%20), 
 and both work through their arguments two at a time.
 
-We use `iflet` to define `aif`, which implicitly binds the variable `it`
+We use [`iflet`](./bel.bel#:~:text=%20iflet%20) to define [`aif`](./bel.bel#:~:text=%20aif%20), which implicitly binds the variable `it`
 to the value of the preceding test expression.
 
 ```
@@ -2045,10 +2045,10 @@ to the value of the preceding test expression.
 (nil c e nil)
 ```
 
-The function given to `map` here tests whether x has a non-nil cdr, 
+The function given to [`map`](./bel.bel#:~:text=%20map%20) here tests whether x has a non-nil cdr, 
 and if so returns the car of `it`.
 
-With `aif` and `some`, it's trivial to define `find`, which returns the
+With [`aif`](./bel.bel#:~:text=%20aif%20) and [`some`](./bel.bel#:~:text=%20some%20), it's trivial to define [`find`](./bel.bel#:~:text=%20find%20), which returns the
 first element of a list that matches some test.
 
 ```
@@ -2057,7 +2057,7 @@ first element of a list that matches some test.
 "apple"
 ```
 
-The `begins` function returns true iff its first argument is a list 
+The [`begins`](./bel.bel#:~:text=%20begins%20) function returns true iff its first argument is a list 
 that begins with its second argument:
 
 ```
@@ -2065,10 +2065,10 @@ that begins with its second argument:
 t
 ```
 
-Like `mem`, it takes an optional comparison function that defaults 
-to `=`.
+Like [`mem`](./bel.bel#:~:text=%20mem%20), it takes an optional comparison function that defaults 
+to [`=`](./bel.bel#:~:text=%20=%20).
 
-It's used in `caris`, which returns true iff its first argument is a 
+It's used in [`caris`](./bel.bel#:~:text=%20caris%20), which returns true iff its first argument is a 
 pair whose car is its second.
 
 ```
@@ -2080,7 +2080,7 @@ This is one of those functions you end up using surprisingly often,
 because it's so common for the car of a list to have some special 
 significance.
 
-Our next function, `hug`, applies a function to pairs of elements of a 
+Our next function, [`hug`](./bel.bel#:~:text=%20hug%20), applies a function to pairs of elements of a 
 list. Since the default function is list, by default it simply 
 returns pairs of elements.
 
@@ -2093,9 +2093,9 @@ returns pairs of elements.
 
 This too is something you need surprisingly often, especially when 
 operating on expressions, where it's common to have subexpressions 
-that form implicit pairs. We've seen this already in `if`, `case`, and 
-`iflet`, and we see it implemented with `hug` in the next macro, `with`, 
-which is a multi-variable `let`.
+that form implicit pairs. We've seen this already in [`if`](./bel.bel#:~:text=%20if%20), [`case`](./bel.bel#:~:text=%20case%20), and 
+[`iflet`](./bel.bel#:~:text=%20iflet%20), and we see it implemented with [`hug`](./bel.bel#:~:text=%20hug%20) in the next macro, [`with`](./bel.bel#:~:text=%20with%20), 
+which is a multi-variable [`let`](./bel.bel#:~:text=%20let%20).
 
 ```
 > (with (x 'a 
@@ -2116,7 +2116,7 @@ values of later ones.
 a
 ```
 
-The next function, `keep`, returns all the elements of a list that pass 
+The next function, [`keep`](./bel.bel#:~:text=%20keep%20), returns all the elements of a list that pass 
 some test
 
 ```
@@ -2124,7 +2124,7 @@ some test
 (1 3 5)
 ```
 
-and `rem` removes its first argument from a list
+and [`rem`](./bel.bel#:~:text=%20rem%20) removes its first argument from a list
 
 ```
 > (rem \a "abracadabra")
@@ -2140,7 +2140,7 @@ argument.
 (3 1 2)
 ```
 
-The next two functions, `get` and `put`, are for operating on key-value
+The next two functions, [`get`](./bel.bel#:~:text=%20get%20) and [`put`](./bel.bel#:~:text=%20put%20), are for operating on key-value
 stores represented as lists of pairs like this one:
 
 ```
@@ -2148,7 +2148,7 @@ stores represented as lists of pairs like this one:
 ((a . 1) (b . 2) (c . 3))
 ```
 
-The first, `get`, retrieves entries,
+The first, [`get`](./bel.bel#:~:text=%20get%20), retrieves entries,
 
 ```
 > (get 'a x)
@@ -2157,7 +2157,7 @@ The first, `get`, retrieves entries,
 nil
 ```
 
-and the second, `put`, creates them.
+and the second, [`put`](./bel.bel#:~:text=%20put%20), creates them.
 
 ```
 > (put 'z 26 x)
@@ -2166,21 +2166,21 @@ and the second, `put`, creates them.
 ((a . 9) (b . 2) (c . 3))
 ```
 
-The reason `get` returns the whole pair instead of just the associated
+The reason [`get`](./bel.bel#:~:text=%20get%20) returns the whole pair instead of just the associated
 value is so that we can distinguish between a key having a value of 
 `nil` and having no value.
 
-Notice that `put` doesn't change the value of `x`, just as `cons`ing 
+Notice that [`put`](./bel.bel#:~:text=%20put%20) doesn't change the value of `x`, just as [`cons`](./bel.bel#:~:text=%20cons%20)ing 
 something onto `x` wouldn't change the value of it. 
 
-The function `rev` reverses a list,
+The function [`rev`](./bel.bel#:~:text=%20rev%20) reverses a list,
 
 ```
 > (rev "able")
 "elba"
 ```
 
-and `snap` breaks off a piece of its second argument that's as long as
+and [`snap`](./bel.bel#:~:text=%20snap%20) breaks off a piece of its second argument that's as long as
 its first, returning both parts:
 
 ```
@@ -2188,7 +2188,7 @@ its first, returning both parts:
 ((1 2) (3 4 5))
 ```
 
-It's used in `udrop` (for "unary drop"), which returns just the 
+It's used in [`udrop`](./bel.bel#:~:text=%20udrop%20) (for "unary drop"), which returns just the 
 remaining part:
 
 ```
@@ -2196,7 +2196,7 @@ remaining part:
 (3 4 5)
 ```
 
-Then we get the identity function, `idfn`:
+Then we get the identity function, [`idfn`](./bel.bel#:~:text=%20idfn%20):
 
 ```
 > (map idfn '(a b c))
@@ -2206,7 +2206,7 @@ Then we get the identity function, `idfn`:
 You wouldn't call this directly (why bother?) but you often end up
 using it as a default or when operating on functions.
 
-The function `is` is a little unusual in that it returns a function for
+The function [`is`](./bel.bel#:~:text=%20is%20) is a little unusual in that it returns a function for
 comparing its argument to something. 
 
 ```
@@ -2214,7 +2214,7 @@ comparing its argument to something.
 t
 ```
 
-An `is` is a partially applied `=`, so in principle we won't need it 
+An [`is`](./bel.bel#:~:text=%20is%20) is a partially applied [`=`](./bel.bel#:~:text=%20=%20), so in principle we won't need it 
 after we define partial application later on. But this case is so
 common that it's convenient to have a separate operator for it.
 
