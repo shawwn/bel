@@ -937,7 +937,7 @@ as an abbreviation for
 In Bel, underscore is an ordinary character and `_` is thus an ordinary 
 variable.
 
-Finally, treat an expression with a prepended backquote (`) as a
+Finally, treat an expression with a prepended backquote (``\```) as a
 quoted list, but with "holes," marked by commas, where evaluation 
 is turned back on again. 
 
