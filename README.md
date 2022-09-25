@@ -1774,7 +1774,7 @@ avoid an infinite recursion we either have to define [`reduce`](./bel.bel#:~:tex
 literal function, or make either [`fn`](./bel.bel#:~:text=%20fn%20) or [`do`](./bel.bel#:~:text=%20do%20) consider the single 
 expression case, and making [`fn`](./bel.bel#:~:text=%20fn%20) do it was the least ugly.
 
-Now that we have [`let`](./bel.bel#:~:text=%20let%20), we can define [`or`](./bel.bel#:~:text=%20or%20), which returns the first 
+Now that we have [`let`](./bel.bel#:~:text=%20let%20), we can define [`or`](./bel.bel#:~:text=mac%20or%20), which returns the first 
 non-nil value returned by one of its arguments. Like most ors in
 programming languages, it only evaluates as many arguments as it
 needs to, which means you can use it for control flow as well as
@@ -1785,8 +1785,8 @@ logical disjunction.
 a
 ```
 
-The definition of [`or`](./bel.bel#:~:text=%20or%20) is the first recursive macro definition we've
-seen. Unless it has no arguments, an [`or`](./bel.bel#:~:text=%20or%20) will expand into another [`or`](./bel.bel#:~:text=%20or%20).  
+The definition of [`or`](./bel.bel#:~:text=mac%20or%20) is the first recursive macro definition we've
+seen. Unless it has no arguments, an [`or`](./bel.bel#:~:text=mac%20or%20) will expand into another [`or`](./bel.bel#:~:text=mac%20or%20).  
 This is fine so long as the recursion terminates, which this one 
 will because each time we look at the `cdr` of the list of arguments, 
 which will eventually be `nil`. (Though you could spoof or by 
@@ -1822,12 +1822,12 @@ Notice incidentally that the expression above could be optimized
       bar))
 ```
 
-but the definition of [`or`](./bel.bel#:~:text=%20or%20) doesn't try to; like every definition in
+but the definition of [`or`](./bel.bel#:~:text=mac%20or%20) doesn't try to; like every definition in
 Bel, its purpose is to define what or means, not to provide an 
 efficient implementation of it.
 
 In Bel, macros are `apply`able just like functions are, though if you
-do that you get only the logical aspect of [`or`](./bel.bel#:~:text=%20or%20) and not the control
+do that you get only the logical aspect of [`or`](./bel.bel#:~:text=mac%20or%20) and not the control
 aspect, since in a call to apply the arguments have already all been
 evaluated.
 
@@ -1838,7 +1838,7 @@ nil
 a
 ```
 
-The [`and`](./bel.bel#:~:text=%20and%20) macro is similar in spirit to [`or`](./bel.bel#:~:text=%20or%20), but different in its 
+The [`and`](./bel.bel#:~:text=%20and%20) macro is similar in spirit to [`or`](./bel.bel#:~:text=mac%20or%20), but different in its 
 implementation. Whereas or uses recursion to generate its expansion, 
 and uses reduce. Since 
 
