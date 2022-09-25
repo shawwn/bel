@@ -2579,8 +2579,8 @@ from the interpreter running in Bel to the Bel program it's
 evaluating.
 
 We use [`binding`](./bel.bel#:~:text=%20binding%20) to check whether a variable has a dynamic binding. It
-checks by searching the expression stack looking for an entry binding 
-that variable. As we'll see when we get to its definition, [`dyn`](./bel.bel#:~:text=%20dyn%20) works 
+checks by [searching the expression stack](./bel.bel#:~:text=%28map%20car%20s%29) looking for [an entry binding 
+that variable](./bel.bel#:~:text=%5Bbegins%20_%20%28list%20smark%20%27bind%29%20id%5D). As we'll see when we get to its definition, [`dyn`](./bel.bel#:~:text=%20dyn%20) works 
 by inserting a special entry on the expression stack listing the 
 variable it wants to bind and its value. There are other operators 
 that insert special entries on the expression stack too. These 
