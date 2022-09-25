@@ -1419,7 +1419,7 @@ list. That's what `map2` does, and not surprisingly, the code is the
 same as in `map2` except that `xs` becomes `(car ls)`.
 
 Finally in the general case we call `f` on all the first elements
-(which we collect using `map`) and `cons` that onto `map` of `f` on all the 
+(which we collect using [`map`](./bel.bel#:~:text=%20map%20)) and `cons` that onto [`map`](./bel.bel#:~:text=%20map%20) of `f` on all the 
 rests of the lists.
 
 Notice that map calls itself recursively in two ways: there is the
@@ -1428,13 +1428,13 @@ line. But in the preceding line we also use `(map car ls)` to collect
 the arguments for `f`. And that's why we need the single-list base 
 case. Without it, we'd get an infinite recursion.
 
-Next comes our first macro, fn. There are two concepts to explain 
+Next comes our first macro, [`fn`](./bel.bel#:~:text=%20fn%20). There are two concepts to explain 
 first, though: macros and scope. 
 
 A macro is essentially a function that generates code. I would have 
-liked the first example of a macro to be something simpler, but `fn`
+liked the first example of a macro to be something simpler, but [`fn`](./bel.bel#:~:text=%20fn%20)
 is the one we need first. So I'll introduce macros using a simpler 
-macro that isn't part of Bel, then explain `fn`.
+macro that isn't part of Bel, then explain [`fn`](./bel.bel#:~:text=%20fn%20).
 
 Here is a very simple macro:
 
@@ -1503,7 +1503,7 @@ but as
   `(cons nil ,x))
 ```
 
-Now let's work our way up to fn, starting with the following 
+Now let's work our way up to [`fn`](./bel.bel#:~:text=%20fn%20), starting with the following 
 simplified version:
 
 ```
@@ -1526,7 +1526,7 @@ But if we don't need either of these things, the functions made by
 (a . b)
 ```
 
-All the extra complexity in the definition of `fn` is to get those two 
+All the extra complexity in the definition of [`fn`](./bel.bel#:~:text=%20fn%20) is to get those two 
 features, the local environment and a body of more than one 
 expression.
 
