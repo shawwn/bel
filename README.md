@@ -961,7 +961,7 @@ list:
 ```
 
 Now let's look at the source. The first expression defines a function
-no that takes one argument, `x`, and returns the result of using id to
+[`no`](./bel.bel#:~:text=%20no%20) that takes one argument, `x`, and returns the result of using id to
 compare it to nil. So `no` returns `t` if its argument is nil, and nil 
 otherwise.
 
