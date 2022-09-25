@@ -1127,7 +1127,7 @@ or if an `if` is long,
      else)
 ```
 
-The next function, `cons`, has the name that `join` had in McCarthy's
+The next function, [`cons`](./bel.bel#:~:text=%20cons%20), has the name that `join` had in McCarthy's
 Lisp. It's the function you use to put things on the front of a list.
 
 ```
@@ -1143,7 +1143,7 @@ use `join`.
 (a b c)
 ```
 
-With `cons`, however, you can supply more than one thing to put on the
+With [`cons`](./bel.bel#:~:text=%20cons%20), however, you can supply more than one thing to put on the
 front:
 
 ```
@@ -1151,10 +1151,10 @@ front:
 (a b c d e f)
 ```
 
-Since `cons` is a generalization of `join`, it's rare to see `join` in
+Since [`cons`](./bel.bel#:~:text=%20cons%20) is a generalization of `join`, it's rare to see `join` in
 programs.
 
-We see something new in the definition of `cons`: it has a single 
+We see something new in the definition of [`cons`](./bel.bel#:~:text=%20cons%20): it has a single 
 parameter, `args`, instead of a list of parameters. When a function has 
 a single parameter, its value will be a list of all the arguments 
 supplied when the function is called. So if we call cons thus
