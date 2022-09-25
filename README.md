@@ -1286,7 +1286,7 @@ is equivalent to
 
 In the general case apply can take one or more arguments, and is 
 equivalent to calling `apply` on the first argument and all the 
-intervening arguments `cons`ed onto the last. I.e.
+intervening arguments [`cons`](./bel.bel#:~:text=%20cons%20)ed onto the last. I.e.
 
 ```
 (apply f x y z)
@@ -1311,14 +1311,14 @@ element but the first element is `nil`. In that case we can ignore it,
 and apply [`append`](./bel.bel#:~:text=%20append%20) to the rest of `args`.
 
 Finally in the last clause we see the general case. It uses the 
-same strategy we saw in `append2`: `cons` the first element of the
+same strategy we saw in `append2`: [`cons`](./bel.bel#:~:text=%20cons%20) the first element of the
 first argument onto a recursive call to append on the rest of the 
 first argument and the remaining arguments. Unlike `append2`, [`append`](./bel.bel#:~:text=%20append%20)
 has to make this call using `apply`, because it has a varying number of
 arguments in a list, instead of exactly two.
 
 Once we have [`append`](./bel.bel#:~:text=%20append%20) it's easy to define [`snoc`](./bel.bel#:~:text=%20snoc%20), which as its name
-suggests is like a reverse `cons`,
+suggests is like a reverse [`cons`](./bel.bel#:~:text=%20cons%20),
 
 ```
 > (snoc '(a b c) 'd 'e)
@@ -1419,7 +1419,7 @@ list. That's what `map2` does, and not surprisingly, the code is the
 same as in `map2` except that `xs` becomes `(car ls)`.
 
 Finally in the general case we call `f` on all the first elements
-(which we collect using [`map`](./bel.bel#:~:text=%20map%20)) and `cons` that onto [`map`](./bel.bel#:~:text=%20map%20) of `f` on all the 
+(which we collect using [`map`](./bel.bel#:~:text=%20map%20)) and [`cons`](./bel.bel#:~:text=%20cons%20) that onto [`map`](./bel.bel#:~:text=%20map%20) of `f` on all the 
 rests of the lists.
 
 Notice that map calls itself recursively in two ways: there is the
@@ -1456,7 +1456,7 @@ transform it into
 ```
 
 and then evaluate that and return its value as the value of the call 
-to nilwith.
+to `nilwith`.
 
 ```
 > (nilwith 'a)
@@ -1593,9 +1593,9 @@ just lists after all.
 3
 ```
 
-The reason the definition of `fn` expands into a call to `list` is so 
+The reason the definition of [`fn`](./bel.bel#:~:text=%20fn%20) expands into a call to [`list`](./bel.bel#:~:text=%20list%20) is so 
 that we can incorporate the local environment, which we get by 
-including `scope` in the arguments to `list`.
+including `scope` in the arguments to [`list`](./bel.bel#:~:text=%20list%20).
 
 Here's an example where we do this manually:
 
@@ -1620,11 +1620,11 @@ hand. So this is equivalent to the definition above:
   ((fn (y) (+ x y)) 2))
 ```
 
-The `fn` macro has two different expansions depending on how many 
+The [`fn`](./bel.bel#:~:text=%20fn%20) macro has two different expansions depending on how many 
 arguments we pass to it. That's so that functions can have bodies of
 more than one expression.
 
-If we call `fn` with two arguments, meaning a parameter list and an
+If we call [`fn`](./bel.bel#:~:text=%20fn%20) with two arguments, meaning a parameter list and an
 expression, as in e.g.
 
 ```
@@ -1637,7 +1637,7 @@ then `(cdr body)` will be false, so the expansion will be
 (list 'lit 'clo scope '(x) '(cons 'a x))
 ```
 
-If we call `fn` with three or more arguments, meaning a parameter list 
+If we call [`fn`](./bel.bel#:~:text=%20fn%20) with three or more arguments, meaning a parameter list 
 plus two or more expressions, e.g.
 
 ```
@@ -1646,13 +1646,13 @@ plus two or more expressions, e.g.
   (cons 'a x))
 ```
 
-Then the expansion wraps a `do` around the expressions.
+Then the expansion wraps a [`do`](./bel.bel#:~:text=%20do%20) around the expressions.
 
 ```
 (list 'lit 'clo scope '(x) '(do (prn 'hello) (cons 'a x)))
 ```
 
-We haven't seen `do` yet, but it's coming soon. It makes multiple
+We haven't seen [`do`](./bel.bel#:~:text=%20do%20) yet, but it's coming soon. It makes multiple
 expressions into a block of code. 
 
 Next comes something unusual: vmark is set to a newly created pair 
@@ -1661,14 +1661,14 @@ made by join. Missing arguments to primitives default to `nil`, so
 this, it's usually for the purpose of creating a fresh pair to mark 
 the identity of something.
 
-Any pair with `vmark` in its `car` is treated by Bel as a variable. The 
-next function, `uvar`, thus returns a new, unique variable each time 
+Any pair with [`vmark`](./bel.bel#:~:text=%20vmark%20) in its `car` is treated by Bel as a variable. The 
+next function, [`uvar`](./bel.bel#:~:text=%20uvar%20), thus returns a new, unique variable each time 
 it's called. The reason we need such a thing is so that when we're
 manipulating user code, we can add variables without worrying they'll 
 accidentally share the names of variables created by users.
 
-Now we see the definition of `do`, which we used in the expansion of 
-`fn`. The `do` macro uses nested function calls to represent blocks of 
+Now we see the definition of [`do`](./bel.bel#:~:text=%20do%20), which we used in the expansion of 
+[`fn`](./bel.bel#:~:text=%20fn%20). The [`do`](./bel.bel#:~:text=%20do%20) macro uses nested function calls to represent blocks of 
 code.
 
 Suppose you want to evaluate two expressions in order and then return
