@@ -2488,11 +2488,11 @@ the usual `(s r m)` triple. So
 (list (list e nil))
 ```
 
-is an expression stack containing nothing except `e`, to be evaluated 
-in a null environment. The second argument, `nil`, is the return value 
-stack, which is empty because we're not returning from anything. And 
-the third argument is `m`, aka `(p g)`, a list of the other threads 
-(currently `nil`) and an environment to use as the global bindings.
+is an [expression stack containing nothing except `e`](./bel.bel#:~:text=%28list%20%28list%20e%20nil%29%29), to be [evaluated 
+in a null environment](./bel.bel#:~:text=e%20nil%29%29). The second argument, `nil`, is the [return value 
+stack](./bel.bel#:~:text=%0A%20%20%20%20%20%20nil%0A), which is empty because we're not returning from anything. And 
+the [third argument is `m`, aka `(p g)`](./bel.bel#:~:text=%28list%20nil%20g%29), a [list of the other threads 
+(currently `nil`)](./bel.bel#:~:text=%28list%20nil%20) and an [environment to use as the global bindings](./bel.bel#:~:text=g%29%29%29).
 
 If we jump ahead a few definitions to [`ev`](./bel.bel#:~:text=%20ev%20), we come to the core of the 
 interpreter. This function plays the role `eval` did in McCarthy's 
