@@ -2480,8 +2480,8 @@ value stack, and `m` is a list `(p g)` of the other threads and the
 global bindings.
 
 The interpreter itself begins with the function [`bel`](./bel.bel#:~:text=def%20bel%20), which takes an 
-expression `e` and starts the interpreter running with a single thread 
-in which `e` is to be evaluated. The arguments it sends to ev represent 
+expression `e` and [starts the interpreter](./bel.bel#:~:text=%28ev%20) running with a [single thread](./bel.bel#:~:text=%28list%20nil%20g%29) 
+in which [`e` is to be evaluated](./bel.bel#:~:text=%28list%20e%20nil%29). The arguments it sends to ev represent 
 the usual `(s r m)` triple. So 
 
 ```
