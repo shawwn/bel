@@ -2553,8 +2553,8 @@ the current thread on the front of the list of threads](./bel.bel#:~:text=%28con
 [put it on the end](./bel.bel#:~:text=%28snoc%20p%20%28list%20s%20r%29%29). Since [`sched`](./bel.bel#:~:text=%20sched%20) always runs the first thread on the 
 list, if we keep the current thread on the front, it keeps running.
 
-Now that we've seen how [`mev`](./bel.bel#:~:text=%20mev%20) and [`sched`](./bel.bel#:~:text=%20sched%20) work, let's return to [`ev`](./bel.bel#:~:text=%20ev%20). If `e` 
-is a variable, we call [`vref`](./bel.bel#:~:text=%20vref%20) to evaluate it. And what [`vref`](./bel.bel#:~:text=%20vref%20) ordinarily 
+Now that we've seen how [`mev`](./bel.bel#:~:text=%20mev%20) and [`sched`](./bel.bel#:~:text=%20sched%20) work, let's return to [`ev`](./bel.bel#:~:text=%20ev%20). If [`e` 
+is a variable](./bel.bel#:~:text=%28variable%20e%29), we [call `vref` to evaluate it](./bel.bel#:~:text=%28vref%20e%20a%20s%20r%20m%29). And what [`vref`](./bel.bel#:~:text=%20vref%20) ordinarily 
 does is this:
 
 ```
