@@ -2494,7 +2494,7 @@ stack, which is empty because we're not returning from anything. And
 the third argument is `m`, aka `(p g)`, a list of the other threads 
 `(currently nil)` and an environment to use as the global bindings.
 
-If we jump ahead a few definitions to `ev`, we come to the core of the 
+If we jump ahead a few definitions to [`ev`](./bel.bel#:~:text=%20ev%20), we come to the core of the 
 interpreter. This function plays the role `eval` did in McCarthy's 
 Lisp. Its parameters implicitly pull an `(e a)` expression-environment 
 pair off the expression stack. There are only five things the 
@@ -2502,14 +2502,14 @@ expression can be:
 
 1. A literal, in which case we return it.
 
-2. A variable, in which case we call `vref` to look up its value.
+2. A variable, in which case we call [`vref`](./bel.bel#:~:text=%20vref%20) to look up its value.
 
 3. An improper list, in which case we signal an error.
 
 4. A list beginning with a special form, in which case we call the 
    associated function stored in forms.
 
-5. An ordinary call, in which case we call `evcall` on it.
+5. An ordinary call, in which case we call [`evcall`](./bel.bel#:~:text=%20evcall%20) on it.
 
 I'm going to follow the trail of evaluating a literal to explain some 
 things about how evaluation works, then come back and examine the 
@@ -2520,7 +2520,7 @@ interpreter is that it never returns a value till it terminates.
 The way it implements returning a value in the program it's
 evaluating is not by returning a value itself, but by a recursive 
 call to the interpreter with a shorter expression stack and the 
-return value `cons`ed onto the return stack. And that's what we see 
+return value [`cons`](./bel.bel#:~:text=%20cons%20)ed onto the return stack. And that's what we see 
 happening in the code that runs when `e` is a literal:
 
 ```
@@ -2529,14 +2529,14 @@ happening in the code that runs when `e` is a literal:
 
 That is what returning a value looks like.
 
-The function `mev` (`m` = multi-threaded) is what the interpreter calls 
+The function [`mev`](./bel.bel#:~:text=%20mev%20) (`m` = multi-threaded) is what the interpreter calls 
 to continue evaluation after doing something. Its purpose is to check 
 whether interpretation should terminate, and if not, to allow another 
 thread to run.
 
-The first thing `mev` does is check if the current thread has run out 
+The first thing [`mev`](./bel.bel#:~:text=%20mev%20) does is check if the current thread has run out 
 of work to do. If so, if `s` is `nil`, it checks whether there are other 
-threads in `p`. If there are, it calls `sched` to run one. If not, if 
+threads in `p`. If there are, it calls [`sched`](./bel.bel#:~:text=%20sched%20) to run one. If not, if 
 this is the only thread and we've just finished it, then it returns 
 whatever's on top of the return value stack as the value of calling 
 the interpreter.
@@ -2550,11 +2550,11 @@ steps to complete, and in the middle is in an inconsistent state.
 The way a program signals that it doesn't want to be interrupted is 
 by dynamically binding `lock` to a non-nil value. If `lock` is on, we put 
 the current thread on the front of the list of threads, and if not we 
-put it on the end. Since `sched` always runs the first thread on the 
+put it on the end. Since [`sched`](./bel.bel#:~:text=%20sched%20) always runs the first thread on the 
 list, if we keep the current thread on the front, it keeps running.
 
-Now that we've seen how `mev` and `sched` work, let's return to `ev`. If `e` 
-is a variable, we call `vref` to evaluate it. And what `vref` ordinarily 
+Now that we've seen how [`mev`](./bel.bel#:~:text=%20mev%20) and [`sched`](./bel.bel#:~:text=%20sched%20) work, let's return to [`ev`](./bel.bel#:~:text=%20ev%20). If `e` 
+is a variable, we call [`vref`](./bel.bel#:~:text=%20vref%20) to evaluate it. And what [`vref`](./bel.bel#:~:text=%20vref%20) ordinarily 
 does is this:
 
 ```
@@ -2563,13 +2563,13 @@ does is this:
      (sigerr 'unbound s r m))
 ```
 
-You may now recognize that kind of call to `mev`: that's returning a 
+You may now recognize that kind of call to [`mev`](./bel.bel#:~:text=%20mev%20): that's returning a 
 value. If the lookup succeeds, it returns the `(var . val)` pair it 
 found, so the value is the `cdr` of it. If lookup fails, it returns 
 `nil`, in which case we've just encountered a reference to an unbound 
 variable, and we should signal an error.
 
-Let's skip down to `lookup` and see what it does. It checks, in order, 
+Let's skip down to [`lookup`](./bel.bel#:~:text=%20lookup%20) and see what it does. It checks, in order, 
 whether the variable has a dynamic binding, a lexical binding, or a 
 global binding. At the end there are special cases for the two 
 variables `globe` and `scope`; for them the interpreter simply "leaks" 
@@ -2580,12 +2580,12 @@ evaluating.
 
 We use binding to check whether a variable has a dynamic binding. It
 checks by searching the expression stack looking for an entry binding 
-that variable. As we'll see when we get to its definition, `dyn` works 
+that variable. As we'll see when we get to its definition, [`dyn`](./bel.bel#:~:text=%20dyn%20) works 
 by inserting a special entry on the expression stack listing the 
 variable it wants to bind and its value. There are other operators 
 that insert special entries on the expression stack too. These 
 entries are distinguishable from ordinary expressions by beginning 
-with a pair called `smark`.
+with a pair called [`smark`](./bel.bel#:~:text=%20smark%20).
 
 While we're here, let's look at `sigerr`. This is how the interpreter
 signals an error. As we saw earlier in the examples of continuations,
