@@ -2500,7 +2500,7 @@ Lisp. Its parameters implicitly pull an `(e a)` expression-environment
 pair off the expression stack. There are only five things the 
 expression can be:
 
-1. [A literal](./bel.bel#:~:text=%28literal%20e%29), in which case we [return it](./bel.bel#:~:text=%28mev%20s%20%28cons%20e%20r%29%20m%29).
+1. [A literal](./bel.bel#:~:text=aif%20%28literal%20e%29), in which case we [return it](./bel.bel#:~:text=%28mev%20s%20%28cons%20e%20r%29%20m%29).
 
 2. [A variable](./bel.bel#:~:text=%28variable%20e%29), in which case we call [`vref`](./bel.bel#:~:text=%20vref%20) to look up its value.
 
