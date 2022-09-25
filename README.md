@@ -2564,7 +2564,7 @@ does is this:
 ```
 
 You may now recognize that kind of call to [`mev`](./bel.bel#:~:text=%20mev%20): that's returning a 
-value. [If the lookup succeeds](./bel.bel#:~:text=if%20%28lookup%20v%20a%20s%20g%29), it returns the `(var . val)` pair it 
+value. [If the lookup succeeds](./bel.bel#:~:text=aif%20%28lookup%20v%20a%20s%20g%29), it returns the `(var . val)` pair it 
 found, so the [value is the `cdr` of it](./bel.bel#:~:text=%28cons%20%28cdr%20it%29%20r%29). If lookup fails, it returns 
 `nil`, in which case we've just encountered a reference to an unbound 
 variable, and we should [signal an error](./bel.bel#:~:text=%28sigerr%20%28list%20%27unboundb%20v%29%20s%20r%20m%29).
