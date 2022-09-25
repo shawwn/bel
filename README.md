@@ -2537,8 +2537,8 @@ thread to run.
 The first thing [`mev`](./bel.bel#:~:text=%20mev%20) does is [check if the current thread has run out 
 of work to do](./bel.bel#:~:text=if%20%28no%20s%29). If so, if `s` is `nil`, it [checks whether there are other 
 threads in `p`](./bel.bel#:~:text=if%20p). If there are, it [calls `sched` to run one](./bel.bel#:~:text=%28sched%20p%20g%29). If not, if 
-this is the only thread and we've just finished it, then it returns 
-whatever's on top of the return value stack as the value of calling 
+this is the only thread and we've just finished it, then it [returns 
+whatever's on top of the return value stack](./bel.bel#:~:text=%28car%20r%29) as the value of calling 
 the interpreter.
 
 If we haven't finished the current expression stack, then we have to 
