@@ -2578,7 +2578,7 @@ situation because data is going from one layer of Bel to another:
 from the interpreter running in Bel to the Bel program it's 
 evaluating.
 
-We use binding to check whether a variable has a dynamic binding. It
+We use [`binding`](./bel.bel#:~:text=%20binding%20) to check whether a variable has a dynamic binding. It
 checks by searching the expression stack looking for an entry binding 
 that variable. As we'll see when we get to its definition, [`dyn`](./bel.bel#:~:text=%20dyn%20) works 
 by inserting a special entry on the expression stack listing the 
