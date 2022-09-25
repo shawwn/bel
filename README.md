@@ -2518,9 +2518,9 @@ other cases.
 One of the most important things to understand about the 
 interpreter is that it never returns a value till it terminates. 
 The way it implements returning a value in the program it's
-evaluating is not by returning a value itself, but by a recursive 
-call to the interpreter with a shorter expression stack and the 
-return value [`cons`](./bel.bel#:~:text=%20cons%20)ed onto the return stack. And that's what we see 
+evaluating is not by returning a value itself, but by a [recursive 
+call to the interpreter](./bel.bel#:~:text=%28mev%20s%20%28cons%20e%20r%29%20m%29) with a [shorter expression stack](./bel.bel#:~:text=%28%28e%20a%29%20.%20s%29) and the 
+[return value `cons`ed onto the return stack](./bel.bel#:~:text=%28cons%20e%20r%29). And that's what we see 
 happening in the [code that runs when `e` is a literal](./bel.bel#:~:text=%28mev%20s%20%28cons%20e%20r%29%20m%29):
 
 ```
