@@ -2570,9 +2570,9 @@ found, so the [value is the `cdr` of it](./bel.bel#:~:text=%28cons%20%28cdr%20it
 variable, and we should [signal an error](./bel.bel#:~:text=%28sigerr%20%28list%20%27unboundb%20v%29%20s%20r%20m%29).
 
 Let's skip down to [`lookup`](./bel.bel#:~:text=%20lookup%20) and see what it does. It checks, in order, 
-whether the variable has a dynamic binding, a lexical binding, or a 
-global binding. At the end there are special cases for the two 
-variables `globe` and `scope`; for them the interpreter simply "leaks" 
+whether the variable has a [dynamic binding](./bel.bel#:~:text=%28binding%20e%20s%29), a [lexical binding](./bel.bel#:~:text=%28get%20e%20a%20id%29), or a 
+[global binding](./bel.bel#:~:text=%28get%20e%20g%20id%29). At the end there are special cases for the two 
+variables [`globe`](./bel.bel#:~:text=globe%20%28cons%20e%20g%29) and [`scope`](./bel.bel#:~:text=scope%20%28cons%20e%20a%29); for them the interpreter simply "leaks" 
 the corresponding parameter. Leak is an apt metaphor in this 
 situation because data is going from one layer of Bel to another: 
 from the interpreter running in Bel to the Bel program it's 
