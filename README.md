@@ -2582,7 +2582,7 @@ We use [`binding`](./bel.bel#:~:text=%20binding%20) to check whether a variable 
 checks by [searching the expression stack](./bel.bel#:~:text=%28map%20car%20s%29) looking for [an entry binding 
 that variable](./bel.bel#:~:text=%5Bbegins%20_%20%28list%20smark%20%27bind%29%20id%5D). As we'll see when we get to its definition, [`dyn`](./bel.bel#:~:text=%20dyn%20) works 
 by [inserting a special entry on the expression stack](./bel.bel#:~:text=%28list%20smark%20%27bind%20%28cons%20v%20%28car%20r%29%29%29) listing the 
-[variable it wants to bind](./bel.bel#:~:text=%27bind%20%28cons%20v%20) and its [value](./bel.bel#:~:text=%28car%20r%29%29%29). There are other operators 
+[variable it wants to bind](./bel.bel#:~:text=%27bind%20%28cons%20v%20) and its [value](./bel.bel#:~:text=%28car%20r%29%29%29). [There](./bel.bel#:~:text=%28list%20smark%20%27loc%20new%29) [are](./bel.bel#:~:text=%28list%20smark%20%27prot%20e2%29) [other](./bel.bel#:~:text=%28list%20smark%20%27fut%20%28fn%20%2C%40args%29%29) operators 
 that insert special entries on the expression stack too. These 
 entries are distinguishable from ordinary expressions by beginning 
 with a pair called [`smark`](./bel.bel#:~:text=%20smark%20).
