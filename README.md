@@ -2492,7 +2492,7 @@ is an expression stack containing nothing except `e`, to be evaluated
 in a null environment. The second argument, `nil`, is the return value 
 stack, which is empty because we're not returning from anything. And 
 the third argument is `m`, aka `(p g)`, a list of the other threads 
-`(currently nil)` and an environment to use as the global bindings.
+(currently `nil`) and an environment to use as the global bindings.
 
 If we jump ahead a few definitions to [`ev`](./bel.bel#:~:text=%20ev%20), we come to the core of the 
 interpreter. This function plays the role `eval` did in McCarthy's 
