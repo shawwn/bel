@@ -2548,7 +2548,7 @@ sometimes you can't, if you're doing something that requires multiple
 steps to complete, and in the middle is in an inconsistent state. 
 
 The way a program signals that it doesn't want to be interrupted is 
-by dynamically binding `lock` to a non-nil value. If `lock` is on, we put 
+by dynamically [binding `lock` to a non-nil value](./bel.bel#:~:text=bind%20lock%20). If [`lock` is on](./bel.bel#:~:text=binding%20'lock%20), we put 
 the current thread on the front of the list of threads, and if not we 
 put it on the end. Since [`sched`](./bel.bel#:~:text=%20sched%20) always runs the first thread on the 
 list, if we keep the current thread on the front, it keeps running.
