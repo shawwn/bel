@@ -2504,7 +2504,7 @@ expression can be:
 
 2. [A variable](./bel.bel#:~:text=%28variable%20e%29), in which case we call [`vref`](./bel.bel#:~:text=%20vref%20) to look up its value.
 
-3. [An improper list](./bel.bel#:~:text=%28no%20%28proper%20e%29%29%20), in which case we [signal an error](./bel.bel#:~:text=%28sigerr%20%27malformed%20s%20r%20m%29).
+3. [An improper list](./bel.bel#:~:text=%28no%20%28proper%20e%29%29), in which case we [signal an error](./bel.bel#:~:text=%28sigerr%20%27malformed%20s%20r%20m%29).
 
 4. [A list beginning with a special form](./bel.bel#:~:text=%28get%20%28car%20e%29%20forms%20id%29), in which case we [call the 
    associated function stored in forms](./bel.bel#:~:text=%28%28cdr%20it%29%20%28cdr%20e%29%20a%20s%20r%20m%29).
