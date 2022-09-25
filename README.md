@@ -2521,7 +2521,7 @@ The way it implements returning a value in the program it's
 evaluating is not by returning a value itself, but by a recursive 
 call to the interpreter with a shorter expression stack and the 
 return value [`cons`](./bel.bel#:~:text=%20cons%20)ed onto the return stack. And that's what we see 
-happening in the code that runs when `e` is a literal:
+happening in the [code that runs when `e` is a literal](./bel.bel#:~:text=%28mev%20s%20%28cons%20e%20r%29%20m%29):
 
 ```
 (mev s (cons e r) m)
