@@ -2479,7 +2479,7 @@ where `s` is the current expression stack, `r` is the current return
 value stack, and `m` is a list `(p g)` of the other threads and the 
 global bindings.
 
-The interpreter itself begins with the function `bel`, which takes an 
+The interpreter itself begins with the function [`bel`](./bel.bel#:~:text=def%20bel%20), which takes an 
 expression `e` and starts the interpreter running with a single thread 
 in which `e` is to be evaluated. The arguments it sends to ev represent 
 the usual `(s r m)` triple. So 
