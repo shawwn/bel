@@ -962,7 +962,7 @@ list:
 
 Now let's look at the source. The first expression defines a function
 [`no`](./bel.bel#:~:text=%20no%20) that takes one argument, `x`, and returns the result of using id to
-compare it to nil. So `no` returns `t` if its argument is nil, and nil 
+compare it to nil. So [`no`](./bel.bel#:~:text=%20no%20) returns `t` if its argument is nil, and nil 
 otherwise.
 
 ```
@@ -975,7 +975,7 @@ nil
 Since `nil` represents both falsity and the empty list, no is both
 logical negation and the test for the empty list. 
 
-The second function, `atom`, returns true iff its argument is not a 
+The second function, [`atom`](./bel.bel#:~:text=%20atom%20), returns true iff its argument is not a 
 pair. 
 
 ```
@@ -989,7 +989,7 @@ t
 nil
 ```
 
-Next come a pair of similar functions, `all` and `some`. The former 
+Next come a pair of similar functions, [`all`](./bel.bel#:~:text=%20all%20) and [`some`](./bel.bel#:~:text=%20some%20). The former 
 returns `t` iff its first argument returns true of all the elements of 
 its second,
 
@@ -1003,7 +1003,7 @@ nil
 ```
 
 and the latter returns true iff its first argument returns true of 
-any element of its second. However, when `some` returns true, it 
+any element of its second. However, when [`some`](./bel.bel#:~:text=%20some%20) returns true, it 
 doesn't simply return `t`. It returns the remainder of the list 
 starting from the point where `f` was true of the first element. 
 
@@ -1031,7 +1031,7 @@ the definition of all might be:
 This technique of doing something to the `car` of a list and then 
 perhaps continuing down the cdr is very common.
 
-Something else is new in `all` and `some`: these are the first functions
+Something else is new in [`all`](./bel.bel#:~:text=%20all%20) and [`some`](./bel.bel#:~:text=%20some%20): these are the first functions
 in the Bel source that you could cause an error by calling.
 
 ```
@@ -1065,7 +1065,7 @@ already exist in Bel you could define it as simply
 But since we haven't defined functional composition yet, I didn't use 
 it.
 
-The next function, `reduce`, is for combining the elements of its 
+The next function, [`reduce`](./bel.bel#:~:text=%20reduce%20), is for combining the elements of its 
 second argument using nested calls to its first. For example 
 
 ```
@@ -1078,10 +1078,10 @@ is equivalent to
 (f 'a (f 'b (f 'c 'd)))
 ```
 
-If `xs` has only one element, `reduce` returns it, and if it's empty,
+If `xs` has only one element, [`reduce`](./bel.bel#:~:text=%20reduce%20) returns it, and if it's empty,
 reduce returns nil; since `(cdr nil)` is nil, we can check both these 
 possibilities with `(no (cdr xs))`. Otherwise it calls `f` on the first
-element and `reduce` of `f` and the remaining elements.
+element and [`reduce`](./bel.bel#:~:text=%20reduce%20) of `f` and the remaining elements.
 
 ```
 > (reduce join '(a b c))
@@ -1089,7 +1089,7 @@ element and `reduce` of `f` and the remaining elements.
 ```
 
 This is not the only way to reduce a list. Later we'll define two 
-more, `foldl` and `foldr`.
+more, [`foldl`](./bel.bel#:~:text=%20foldl%20) and [`foldr`](./bel.bel#:~:text=%20foldr%20).
 
 The definition of reduce shows another way of indenting `if`s. 
 Indentation isn't significant in Bel and only matters insofar as 
@@ -1103,7 +1103,7 @@ the arguments are sufficiently short, it works well to say
           else)
 ```
 
-We saw this in `all` and `some`. But if you only have one test, or some 
+We saw this in [`all`](./bel.bel#:~:text=%20all%20) and [`some`](./bel.bel#:~:text=%20some%20). But if you only have one test, or some 
 arguments are too long to fit two on one line, then it works better 
 to say
 
@@ -1229,7 +1229,7 @@ called
 
 you'll get an error because there is no parameter for `c`.
 
-The next function, `append`, joins lists together:
+The next function, [`append`](./bel.bel#:~:text=%20append%20), joins lists together:
 
 ```
 > (append '(a b c) '(d e f))
@@ -1262,7 +1262,7 @@ becomes
 (cons 'a (append2 '(b c) '(d e f)))
 ```
 
-and so on. The definition of `append` in the Bel source is the same 
+and so on. The definition of [`append`](./bel.bel#:~:text=%20append%20) in the Bel source is the same 
 principle applied to any number of arguments.
 
 In it we see the first use of `apply`. Like `if`, `apply` is a special
@@ -1302,22 +1302,22 @@ It's common to use `apply` in functions like append that take any
 number of arguments. Using apply is in a sense the converse of using 
 a single parameter to collect multiple arguments.
 
-Now let's look at `append`. It takes any number of arguments. 
+Now let's look at [`append`](./bel.bel#:~:text=%20append%20). It takes any number of arguments. 
 Collectively (i.e. as a list) they'll be the value of `args`. If `args`
 is empty or only has one element, then the result is `(car args)`. We 
-saw the same sort of test in the first clause of `reduce`. That's two
+saw the same sort of test in the first clause of [`reduce`](./bel.bel#:~:text=%20reduce%20). That's two
 base cases, and there is also a third: when `args` has more than one
 element but the first element is `nil`. In that case we can ignore it,
-and apply `append` to the rest of `args`.
+and apply [`append`](./bel.bel#:~:text=%20append%20) to the rest of `args`.
 
 Finally in the last clause we see the general case. It uses the 
 same strategy we saw in `append2`: `cons` the first element of the
 first argument onto a recursive call to append on the rest of the 
-first argument and the remaining arguments. Unlike `append2`, `append`
+first argument and the remaining arguments. Unlike `append2`, [`append`](./bel.bel#:~:text=%20append%20)
 has to make this call using `apply`, because it has a varying number of
 arguments in a list, instead of exactly two.
 
-Once we have `append` it's easy to define `snoc`, which as its name
+Once we have [`append`](./bel.bel#:~:text=%20append%20) it's easy to define [`snoc`](./bel.bel#:~:text=%20snoc%20), which as its name
 suggests is like a reverse `cons`,
 
 ```
@@ -1325,7 +1325,7 @@ suggests is like a reverse `cons`,
 (a b c d e)
 ```
 
-and `list`, which returns a list of its arguments.
+and [`list`](./bel.bel#:~:text=%20list%20), which returns a list of its arguments.
 
 ```
 > (list)
@@ -1353,12 +1353,12 @@ and it was called thus
 (apply list x)
 ```
 
-then the value that `list` returned would be the same list as `x` — not 
+then the value that [`list`](./bel.bel#:~:text=%20list%20) returned would be the same list as `x` — not 
 merely a list with the same elements, but the same pair — meaning if
-we modified the value we got from `list`, we'd also be modifying the 
+we modified the value we got from [`list`](./bel.bel#:~:text=%20list%20), we'd also be modifying the 
 object up in the calling code.
 
-After `list` we see map, which in the simplest case returns a list of
+After [`list`](./bel.bel#:~:text=%20list%20) we see [`map`](./bel.bel#:~:text=%20map%20), which in the simplest case returns a list of
 calling its first argument on each element of its second.
 
 ```
@@ -1366,7 +1366,7 @@ calling its first argument on each element of its second.
 (a c e)
 ```
 
-However, `map` can take any number of lists, and calls its first 
+However, [`map`](./bel.bel#:~:text=%20map%20) can take any number of lists, and calls its first 
 argument on successive sets of elements from the others.
 
 ```
@@ -1381,7 +1381,7 @@ It stops as soon as one list runs out
 ((a . 1) (b . 2))
 ```
 
-Like `append`, `map` is easier to understand if we start with a version 
+Like [`append`](./bel.bel#:~:text=%20append%20), [`map`](./bel.bel#:~:text=%20map%20) is easier to understand if we start with a version 
 that takes exactly two arguments.
 
 ```
