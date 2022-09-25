@@ -1706,7 +1706,7 @@ expressions:
 ((fn x ((fn x e3) e2)) e1)
 ```
 
-You can use `reduce` to generate this kind of expression as follows
+You can use [`reduce`](./bel.bel#:~:text=%20reduce%20) to generate this kind of expression as follows
 
 ```
 (def block args
@@ -1718,20 +1718,20 @@ You can use `reduce` to generate this kind of expression as follows
 ((fn x ((fn x e3) e2)) e1)
 ```
 
-and this is almost exactly what the `do` macro does. If you look at
+and this is almost exactly what the [`do`](./bel.bel#:~:text=%20do%20) macro does. If you look at
 its definition, it's almost identical to that of `block`. 
 
-One difference is that `do` is a macro rather than a function, which
+One difference is that [`do`](./bel.bel#:~:text=%20do%20) is a macro rather than a function, which
 means that the nested call gets evaluated after it's generated.
 
-The other difference is that we call `uvar` to make the parameter 
+The other difference is that we call [`uvar`](./bel.bel#:~:text=%20uvar%20) to make the parameter 
 instead of using `x`. We can't safely use any symbol as the parameter
 in case it occurs in one of the expressions in the do. Since we're 
 never going to look at the values passed in these function calls, we 
 don't care what parameter we use, so long as it's unique.
 
 If you want to establish a lexical binding for some variable, you do
-it with `let`, which is a very simple macro upon `fn`.
+it with [`let`](./bel.bel#:~:text=%20let%20), which is a very simple macro upon [`fn`](./bel.bel#:~:text=%20fn%20).
 
 ```
 > (let x 'a 
@@ -1739,7 +1739,7 @@ it with `let`, which is a very simple macro upon `fn`.
 (a . b)
 ```
 
-Since `let` expands into a `fn`, you have the full power of Bel parameter 
+Since [`let`](./bel.bel#:~:text=%20let%20) expands into a [`fn`](./bel.bel#:~:text=%20fn%20), you have the full power of Bel parameter 
 lists in the first argument.
 
 ```
@@ -1748,7 +1748,7 @@ lists in the first argument.
 (a (b c))
 ```
 
-The `macro` macro is analogous to the `fn` macro in that it returns a
+The [`macro`](./bel.bel#:~:text=%20macro%20) macro is analogous to the [`fn`](./bel.bel#:~:text=%20fn%20) macro in that it returns a
 literal macro. You'll rarely use these directly, but you could if you 
 wanted to.
 
@@ -1759,22 +1759,22 @@ a
 a
 ```
 
-Next we see the definition of `def` itself, which does nothing more
-than set its first argument to a `fn` made using the rest of the
-arguments, and also of `mac`, which does the same with macro.
+Next we see the definition of [`def`](./bel.bel#:~:text=%20def%20) itself, which does nothing more
+than set its first argument to a [`fn`](./bel.bel#:~:text=%20fn%20) made using the rest of the
+arguments, and also of [`mac`](./bel.bel#:~:text=%20mac%20), which does the same with macro.
 
 (I like it when I can define new operators as thin, almost trivial
 seeming layers on top of existing operators. It seems a sign of
 orthogonality.)
 
-If you were wondering why `fn` needs two cases — why we don't just 
-always wrap a do around the body — the reason is that `do` calls 
-`reduce`, which is defined using `def`, which expands into a `fn`. So to 
-avoid an infinite recursion we either have to define `reduce` as a 
-literal function, or make either `fn` or `do` consider the single 
-expression case, and making `fn` do it was the least ugly.
+If you were wondering why [`fn`](./bel.bel#:~:text=%20fn%20) needs two cases — why we don't just 
+always wrap a do around the body — the reason is that [`do`](./bel.bel#:~:text=%20do%20) calls 
+[`reduce`](./bel.bel#:~:text=%20reduce%20), which is defined using [`def`](./bel.bel#:~:text=%20def%20), which expands into a [`fn`](./bel.bel#:~:text=%20fn%20). So to 
+avoid an infinite recursion we either have to define [`reduce`](./bel.bel#:~:text=%20reduce%20) as a 
+literal function, or make either [`fn`](./bel.bel#:~:text=%20fn%20) or [`do`](./bel.bel#:~:text=%20do%20) consider the single 
+expression case, and making [`fn`](./bel.bel#:~:text=%20fn%20) do it was the least ugly.
 
-Now that we have `let`, we can define `or`, which returns the first 
+Now that we have [`let`](./bel.bel#:~:text=%20let%20), we can define [`or`](./bel.bel#:~:text=%20or%20), which returns the first 
 non-nil value returned by one of its arguments. Like most ors in
 programming languages, it only evaluates as many arguments as it
 needs to, which means you can use it for control flow as well as
@@ -1785,8 +1785,8 @@ logical disjunction.
 a
 ```
 
-The definition of `or` is the first recursive macro definition we've
-seen. Unless it has no arguments, `an` or will expand into another `or`.  
+The definition of [`or`](./bel.bel#:~:text=%20or%20) is the first recursive macro definition we've
+seen. Unless it has no arguments, an [`or`](./bel.bel#:~:text=%20or%20) will expand into another [`or`](./bel.bel#:~:text=%20or%20).  
 This is fine so long as the recursion terminates, which this one 
 will because each time we look at the `cdr` of the list of arguments, 
 which will eventually be `nil`. (Though you could spoof or by 
@@ -1811,7 +1811,7 @@ expands into
 ```
 
 except that we can't actually use variables like `x` and `y` to hold the 
-values, and instead have to use `uvar`s.
+values, and instead have to use [`uvar`](./bel.bel#:~:text=%20uvar%20)s.
 
 Notice incidentally that the expression above could be optimized
 
@@ -1822,12 +1822,12 @@ Notice incidentally that the expression above could be optimized
       bar))
 ```
 
-but the definition of `or` doesn't try to; like every definition in
+but the definition of [`or`](./bel.bel#:~:text=%20or%20) doesn't try to; like every definition in
 Bel, its purpose is to define what or means, not to provide an 
 efficient implementation of it.
 
 In Bel, macros are `apply`able just like functions are, though if you
-do that you get only the logical aspect of `or` and not the control
+do that you get only the logical aspect of [`or`](./bel.bel#:~:text=%20or%20) and not the control
 aspect, since in a call to apply the arguments have already all been
 evaluated.
 
@@ -1838,7 +1838,7 @@ nil
 a
 ```
 
-The `and` macro is similar in spirit to `or`, but different in its 
+The [`and`](./bel.bel#:~:text=%20and%20) macro is similar in spirit to [`or`](./bel.bel#:~:text=%20or%20), but different in its 
 implementation. Whereas or uses recursion to generate its expansion, 
 and uses reduce. Since 
 
@@ -1854,10 +1854,10 @@ is equivalent to
 
 it's an obvious candidate for reduce. 
 
-Notice the function given to `reduce` has a single parameter. A 
+Notice the function given to [`reduce`](./bel.bel#:~:text=%20reduce%20) has a single parameter. A 
 function given as the first argument to reduce will only ever be 
 called with two arguments, so usually such a function will have a 
-list of two parameters, but in this case we just want to `cons` an `if` 
+list of two parameters, but in this case we just want to [`cons`](./bel.bel#:~:text=%20cons%20) an [`if`](./bel.bel#:~:text=%20if%20) 
 onto the front of the arguments each time.
 
 The other interesting thing about and is what we do when it has no 
@@ -1865,7 +1865,7 @@ arguments. While we want `(or)` to return nil, we want `(and)` to return
 t. So in the second argument to reduce, we replace an empty args with 
 `(t)`.
 
-The next function, `=`, is the one that programs usually use to test 
+The next function, [`=`](./bel.bel#:~:text=%20=%20), is the one that programs usually use to test 
 for equality. It returns true iff its arguments are trees of the same 
 shape whose leaves are the same atoms.
 
@@ -1881,7 +1881,7 @@ pair. Numbers and strings are pairs, for example. So you'd never
 want to use id for comparison unless you were specifically looking
 for identical list structure.
 
-In the definition of `=` we see the first instance of square bracket
+In the definition of [`=`](./bel.bel#:~:text=%20=%20) we see the first instance of square bracket
 notation. 
 
 ```
@@ -1897,7 +1897,7 @@ This is equivalent to
 
 I.e., is everything in the `cdr` of args `id` to the `car`? You know you
 can use `id` to test equality at this point, because if one of the args 
-is an atom, they all have to be for them to be `=,` and you can use `id` 
+is an atom, they all have to be for them to be [`=`](./bel.bel#:~:text=%20=%20), and you can use `id` 
 to test equality of atoms.
 
 If `id` took any number of arguments (it doesn't, because I want axioms
@@ -1908,12 +1908,12 @@ been simply
 (apply id args)
 ```
 
-The next four functions are predicates for the four types. All use `=` 
-for this test even though all could use `id`. My rule is to use `=`
+The next four functions are predicates for the four types. All use [`=`](./bel.bel#:~:text=%20=%20) 
+for this test even though all could use `id`. My rule is to use [`=`](./bel.bel#:~:text=%20=%20)
 unless I specifically need `id`. That way the appearance of `id` is a 
 signal that code is looking for identical structure.
 
-Then we see `proper`, which tells us whether something is a proper
+Then we see [`proper`](./bel.bel#:~:text=%20proper%20), which tells us whether something is a proper
 list. Informally, a proper list is one that we don't need a dot to
 display.
 
@@ -1949,7 +1949,7 @@ nil
 "ar"
 ```
 
-Since it uses `some`, it returns the rest of the list starting with the 
+Since it uses [`some`](./bel.bel#:~:text=%20some%20), it returns the rest of the list starting with the 
 thing we're looking for, rather than simply `t`.
 
 In the definition of mem we see the first use of an optional 
@@ -1976,30 +1976,30 @@ use let:
 (f a b)
 ```
 
-In the definition of `mem`, the optional parameter is a comparison
-function, which defaults, as such functions usually will, to `=`.
+In the definition of [`mem`](./bel.bel#:~:text=%20mem%20), the optional parameter is a comparison
+function, which defaults, as such functions usually will, to [`=`](./bel.bel#:~:text=%20=%20).
 By supplying different comparison functions we can get different 
-behaviors out of `mem`.
+behaviors out of [`mem`](./bel.bel#:~:text=%20mem%20).
 
 ```
 > (mem 3 '(2 4 6 8) >)
 (4 6 8)
 ```
 
-The next function, `in`, is effectively a generalization of `=`. It 
-returns true iff its first argument is `=` to any of the rest.
+The next function, [`in`](./bel.bel#:~:text=%20in%20), is effectively a generalization of [`=`](./bel.bel#:~:text=%20=%20). It 
+returns true iff its first argument is [`=`](./bel.bel#:~:text=%20=%20) to any of the rest.
 
-Then come three common combinations of `car` and `cdr`: `cadr`, which gets 
-the second element of a list, `cddr`, which takes two elements off the 
-front, and `caddr`, which gets the third element. We'll have other ways 
+Then come three common combinations of `car` and `cdr`: [`cadr`](./bel.bel#:~:text=%20cadr%20), which gets 
+the second element of a list, [`cddr`](./bel.bel#:~:text=%20cddr%20), which takes two elements off the 
+front, and [`caddr`](./bel.bel#:~:text=%20caddr%20), which gets the third element. We'll have other ways 
 to do these things once we've defined numbers.
 
-The `case` macro takes an initial expression `e`, followed by 
+The [`case`](./bel.bel#:~:text=%20case%20) macro takes an initial expression `e`, followed by 
 alternating keys (which are implicitly quoted) and expressions, and 
 returns the result of evaluating the expression following the key 
-that's `=` to the value of `e`.  
+that's [`=`](./bel.bel#:~:text=%20=%20) to the value of `e`.  
 
-If `case` is given an even number of arguments, the last one is the 
+If [`case`](./bel.bel#:~:text=%20case%20) is given an even number of arguments, the last one is the 
 default. Otherwise the default is `nil`.
 
 E.g. this function 
