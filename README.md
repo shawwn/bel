@@ -2550,7 +2550,7 @@ steps to complete, and in the middle is in an inconsistent state.
 The way a program signals that it doesn't want to be interrupted is 
 by dynamically [binding `lock` to a non-nil value](./bel.bel#:~:text=bind%20lock%20). If [`lock` is on](./bel.bel#:~:text=binding%20'lock%20), we [put 
 the current thread on the front of the list of threads](./bel.bel#:~:text=%28cons%20%28list%20s%20r%29%20p%29), and if not we 
-put it on the end. Since [`sched`](./bel.bel#:~:text=%20sched%20) always runs the first thread on the 
+[put it on the end](./bel.bel#:~:text=%28snoc%20p%20%28list%20s%20r%29%29). Since [`sched`](./bel.bel#:~:text=%20sched%20) always runs the first thread on the 
 list, if we keep the current thread on the front, it keeps running.
 
 Now that we've seen how [`mev`](./bel.bel#:~:text=%20mev%20) and [`sched`](./bel.bel#:~:text=%20sched%20) work, let's return to [`ev`](./bel.bel#:~:text=%20ev%20). If `e` 
