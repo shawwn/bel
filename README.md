@@ -2218,8 +2218,8 @@ An [`is`](./bel.bel#:~:text=%20is%20) is a partially applied [`=`](./bel.bel#:~:
 after we define partial application later on. But this case is so
 common that it's convenient to have a separate operator for it.
 
-Now come several macros for dealing with errors. The first, `eif`,
-introduces several new concepts, so I'll explain them first, then `eif` 
+Now come several macros for dealing with errors. The first, [`eif`](./bel.bel#:~:text=%20eif%20),
+introduces several new concepts, so I'll explain them first, then [`eif`](./bel.bel#:~:text=%20eif%20) 
 itself.
 
 One thing we see being used for the first time here is dynamic 
@@ -2232,7 +2232,7 @@ a variable with no global value:
 ```
 
 If we call foo normally, we'll get an error saying `snerg` has no 
-value. But if we call `foo` within a `dyn` expression that creates a
+value. But if we call `foo` within a [`dyn`](./bel.bel#:~:text=%20dyn%20) expression that creates a
 dynamic binding for `snerg`, it will work:
 
 ```
@@ -2248,9 +2248,9 @@ We couldn't get the same result by saying
   (foo))
 ```
 
-because a lexical binding created by `let` (or more precisely by a
+because a lexical binding created by [`let`](./bel.bel#:~:text=%20let%20) (or more precisely by a
 function call) is only visible within its body. And whereas lexical 
-bindings get saved in closures (as in e.g. `is`), dynamic bindings, 
+bindings get saved in closures (as in e.g. [`is`](./bel.bel#:~:text=%20is%20)), dynamic bindings, 
 like global ones, don't.
 
 Another concept we're seeing for the first time is that of a 
@@ -2259,7 +2259,7 @@ of happening. (Or more prosaically, it's a copy of the stack.) A
 continuation is callable, like a function, and if you call one, you 
 restart the computation where it was created.
 
-You can get your hands on the current continuation by calling the `ccc` 
+You can get your hands on the current continuation by calling the [`ccc`](./bel.bel#:~:text=%20ccc%20) 
 special form with a function of one argument. It will be the current 
 continuation, which you can then save. Let's try making one.
 
@@ -2281,9 +2281,9 @@ current continuation before returning b:
 ```
 
 It returns the same value, but in the process we've set cont to the
-continuation at the point where the `ccc` occurred. If we call `cont` 
+continuation at the point where the [`ccc`](./bel.bel#:~:text=%20ccc%20) occurred. If we call `cont` 
 with some value, our old computation will be restarted as if that 
-value had been returned by the `ccc` expression:
+value had been returned by the [`ccc`](./bel.bel#:~:text=%20ccc%20) expression:
 
 ```
 > (cont 'z)
@@ -2336,7 +2336,7 @@ This time the car expression does get evaluated, which causes an
 error to be signalled. But by establishing a dynamic binding for
 err, we've ensured that it's our function that gets called when the
 error is signalled. And our function simply returns `hello` from the 
-`ccc` expression. 
+[`ccc`](./bel.bel#:~:text=%20ccc%20) expression. 
 
 You can probably imagine how you'd write a macro to evaluate an 
 expression in an error-proof way: just make the expansion put the
@@ -2348,9 +2348,9 @@ expression within something like
          expression)))
 ```
 
-except of course you'd want to use a `uvar` instead of `c`.
+except of course you'd want to use a [`uvar`](./bel.bel#:~:text=%20uvar%20) instead of `c`.
 
-Now let's look at `eif`. It's like if except that which of its 
+Now let's look at [`eif`](./bel.bel#:~:text=%20eif%20). It's like if except that which of its 
 arguments get evaluated depends not on whether its test expression
 returns true, but whether it causes an error.
 
@@ -2369,7 +2369,7 @@ The variable before the test expression (in this case `x`) will be
 lexically bound either to the value returned by the test expression, 
 or to whatever err was called with if an error occurred.
 
-The expansion of the first `eif` above looks like
+The expansion of the first [`eif`](./bel.bel#:~:text=%20eif%20) above looks like
 
 ```
 (let v (join)
@@ -2381,23 +2381,23 @@ The expansion of the first `eif` above looks like
 ```
 
 except of course `v`, `w`, and `c` will be uvars. When we look at the code
-above, we can see how `eif` tells whether the value it got back from 
+above, we can see how [`eif`](./bel.bel#:~:text=%20eif%20) tells whether the value it got back from 
 the test expression represents an error or not. The variable `v` is 
 bound to a newly created pair. Within the continuation, `err` is bound 
 to a function that returns `v` consed onto whatever `err` was called 
 with. So to decide which of the two succeeding expressions to
 evaluate, we just check whether the `car` of `w` is `v`. (And of course we 
-check using `id`, not `=`.)
+check using `id`, not [`=`](./bel.bel#:~:text=%20=%20).)
 
-The `eif` macro is the most general error-catching macro, but there
-are two more, `onerr` and `safe`, that are more commonly used. The
-`onerr` macro takes two expressions and returns the value of the first
+The [`eif`](./bel.bel#:~:text=%20eif%20) macro is the most general error-catching macro, but there
+are two more, [`onerr`](./bel.bel#:~:text=%20onerr%20) and [`safe`](./bel.bel#:~:text=%20safe%20), that are more commonly used. The
+[`onerr`](./bel.bel#:~:text=%20onerr%20) macro takes two expressions and returns the value of the first
 if the second causes an error:
 
 > (onerr 'oops (car 'a))
 oops
 
-and the `safe` macro simply returns `nil` if the expression within
+and the [`safe`](./bel.bel#:~:text=%20safe%20) macro simply returns `nil` if the expression within
 it causes an error:
 
 ```
@@ -2407,7 +2407,7 @@ a
 nil
 ```
 
-The next function, `literal`, returns true iff its argument evaluates 
+The next function, [`literal`](./bel.bel#:~:text=%20literal%20), returns true iff its argument evaluates 
 to itself,
 
 ```
@@ -2415,16 +2415,16 @@ to itself,
 (t t t)
 ```
 
-while `variable` returns true iff its argument is a variable, meaning
-an ordinary symbol or a `uvar`:
+while [`variable`](./bel.bel#:~:text=%20variable%20) returns true iff its argument is a variable, meaning
+an ordinary symbol or a [`uvar`](./bel.bel#:~:text=%20uvar%20):
 
 ```
 > (map variable (list 'x (uvar) t))
 (t t nil)
 ```
 
-And `isa` is for checking whether something is a particular kind of 
-`lit`. Like `is`, `isa` doesn't do the check, but returns a function that
+And [`isa`](./bel.bel#:~:text=%20isa%20) is for checking whether something is a particular kind of 
+`lit`. Like [`is`](./bel.bel#:~:text=%20is%20), [`isa`](./bel.bel#:~:text=%20isa%20) doesn't do the check, but returns a function that
 does
 
 ```
