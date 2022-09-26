@@ -961,8 +961,8 @@ list:
 ```
 
 Now let's look at the source. The first expression defines a function
-[`no`](./bel.bel#:~:text=%20no%20) that takes one argument, `x`, and returns the result of using id to
-compare it to nil. So [`no`](./bel.bel#:~:text=%20no%20) returns `t` if its argument is nil, and nil 
+[`no`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20no%20) that takes one argument, `x`, and returns the result of using id to
+compare it to nil. So [`no`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20no%20) returns `t` if its argument is nil, and nil 
 otherwise.
 
 ```
@@ -975,7 +975,7 @@ nil
 Since `nil` represents both falsity and the empty list, no is both
 logical negation and the test for the empty list. 
 
-The second function, [`atom`](./bel.bel#:~:text=%20atom%20), returns true iff its argument is not a 
+The second function, [`atom`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20atom%20), returns true iff its argument is not a 
 pair. 
 
 ```
@@ -989,7 +989,7 @@ t
 nil
 ```
 
-Next come a pair of similar functions, [`all`](./bel.bel#:~:text=%20all%20) and [`some`](./bel.bel#:~:text=%20some%20). The former 
+Next come a pair of similar functions, [`all`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20all%20) and [`some`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20some%20). The former 
 returns `t` iff its first argument returns true of all the elements of 
 its second,
 
@@ -1003,7 +1003,7 @@ nil
 ```
 
 and the latter returns true iff its first argument returns true of 
-any element of its second. However, when [`some`](./bel.bel#:~:text=%20some%20) returns true, it 
+any element of its second. However, when [`some`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20some%20) returns true, it 
 doesn't simply return `t`. It returns the remainder of the list 
 starting from the point where `f` was true of the first element. 
 
@@ -1031,7 +1031,7 @@ the definition of all might be:
 This technique of doing something to the `car` of a list and then 
 perhaps continuing down the cdr is very common.
 
-Something else is new in [`all`](./bel.bel#:~:text=%20all%20) and [`some`](./bel.bel#:~:text=%20some%20): these are the first functions
+Something else is new in [`all`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20all%20) and [`some`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20some%20): these are the first functions
 in the Bel source that you could cause an error by calling.
 
 ```
@@ -1065,7 +1065,7 @@ already exist in Bel you could define it as simply
 But since we haven't defined functional composition yet, I didn't use 
 it.
 
-The next function, [`reduce`](./bel.bel#:~:text=%20reduce%20), is for combining the elements of its 
+The next function, [`reduce`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20reduce%20), is for combining the elements of its 
 second argument using nested calls to its first. For example 
 
 ```
@@ -1078,10 +1078,10 @@ is equivalent to
 (f 'a (f 'b (f 'c 'd)))
 ```
 
-If `xs` has only one element, [`reduce`](./bel.bel#:~:text=%20reduce%20) returns it, and if it's empty,
+If `xs` has only one element, [`reduce`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20reduce%20) returns it, and if it's empty,
 reduce returns nil; since `(cdr nil)` is nil, we can check both these 
 possibilities with `(no (cdr xs))`. Otherwise it calls `f` on the first
-element and [`reduce`](./bel.bel#:~:text=%20reduce%20) of `f` and the remaining elements.
+element and [`reduce`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20reduce%20) of `f` and the remaining elements.
 
 ```
 > (reduce join '(a b c))
@@ -1089,7 +1089,7 @@ element and [`reduce`](./bel.bel#:~:text=%20reduce%20) of `f` and the remaining 
 ```
 
 This is not the only way to reduce a list. Later we'll define two 
-more, [`foldl`](./bel.bel#:~:text=%20foldl%20) and [`foldr`](./bel.bel#:~:text=%20foldr%20).
+more, [`foldl`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20foldl%20) and [`foldr`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20foldr%20).
 
 The definition of reduce shows another way of indenting `if`s. 
 Indentation isn't significant in Bel and only matters insofar as 
@@ -1103,7 +1103,7 @@ the arguments are sufficiently short, it works well to say
           else)
 ```
 
-We saw this in [`all`](./bel.bel#:~:text=%20all%20) and [`some`](./bel.bel#:~:text=%20some%20). But if you only have one test, or some 
+We saw this in [`all`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20all%20) and [`some`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20some%20). But if you only have one test, or some 
 arguments are too long to fit two on one line, then it works better 
 to say
 
@@ -1127,7 +1127,7 @@ or if an `if` is long,
      else)
 ```
 
-The next function, [`cons`](./bel.bel#:~:text=%20cons%20), has the name that `join` had in McCarthy's
+The next function, [`cons`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cons%20), has the name that `join` had in McCarthy's
 Lisp. It's the function you use to put things on the front of a list.
 
 ```
@@ -1143,7 +1143,7 @@ use `join`.
 (a b c)
 ```
 
-With [`cons`](./bel.bel#:~:text=%20cons%20), however, you can supply more than one thing to put on the
+With [`cons`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cons%20), however, you can supply more than one thing to put on the
 front:
 
 ```
@@ -1151,10 +1151,10 @@ front:
 (a b c d e f)
 ```
 
-Since [`cons`](./bel.bel#:~:text=%20cons%20) is a generalization of `join`, it's rare to see `join` in
+Since [`cons`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cons%20) is a generalization of `join`, it's rare to see `join` in
 programs.
 
-We see something new in the definition of [`cons`](./bel.bel#:~:text=%20cons%20): it has a single 
+We see something new in the definition of [`cons`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cons%20): it has a single 
 parameter, `args`, instead of a list of parameters. When a function has 
 a single parameter, its value will be a list of all the arguments 
 supplied when the function is called. So if we call cons thus
@@ -1229,7 +1229,7 @@ called
 
 you'll get an error because there is no parameter for `c`.
 
-The next function, [`append`](./bel.bel#:~:text=%20append%20), joins lists together:
+The next function, [`append`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20append%20), joins lists together:
 
 ```
 > (append '(a b c) '(d e f))
@@ -1262,7 +1262,7 @@ becomes
 (cons 'a (append2 '(b c) '(d e f)))
 ```
 
-and so on. The definition of [`append`](./bel.bel#:~:text=%20append%20) in the Bel source is the same 
+and so on. The definition of [`append`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20append%20) in the Bel source is the same 
 principle applied to any number of arguments.
 
 In it we see the first use of `apply`. Like `if`, `apply` is a special
@@ -1286,7 +1286,7 @@ is equivalent to
 
 In the general case apply can take one or more arguments, and is 
 equivalent to calling `apply` on the first argument and all the 
-intervening arguments [`cons`](./bel.bel#:~:text=%20cons%20)ed onto the last. I.e.
+intervening arguments [`cons`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cons%20)ed onto the last. I.e.
 
 ```
 (apply f x y z)
@@ -1302,30 +1302,30 @@ It's common to use `apply` in functions like append that take any
 number of arguments. Using apply is in a sense the converse of using 
 a single parameter to collect multiple arguments.
 
-Now let's look at [`append`](./bel.bel#:~:text=%20append%20). It takes any number of arguments. 
+Now let's look at [`append`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20append%20). It takes any number of arguments. 
 Collectively (i.e. as a list) they'll be the value of `args`. If `args`
 is empty or only has one element, then the result is `(car args)`. We 
-saw the same sort of test in the first clause of [`reduce`](./bel.bel#:~:text=%20reduce%20). That's two
+saw the same sort of test in the first clause of [`reduce`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20reduce%20). That's two
 base cases, and there is also a third: when `args` has more than one
 element but the first element is `nil`. In that case we can ignore it,
-and apply [`append`](./bel.bel#:~:text=%20append%20) to the rest of `args`.
+and apply [`append`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20append%20) to the rest of `args`.
 
 Finally in the last clause we see the general case. It uses the 
-same strategy we saw in `append2`: [`cons`](./bel.bel#:~:text=%20cons%20) the first element of the
+same strategy we saw in `append2`: [`cons`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cons%20) the first element of the
 first argument onto a recursive call to append on the rest of the 
-first argument and the remaining arguments. Unlike `append2`, [`append`](./bel.bel#:~:text=%20append%20)
+first argument and the remaining arguments. Unlike `append2`, [`append`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20append%20)
 has to make this call using `apply`, because it has a varying number of
 arguments in a list, instead of exactly two.
 
-Once we have [`append`](./bel.bel#:~:text=%20append%20) it's easy to define [`snoc`](./bel.bel#:~:text=%20snoc%20), which as its name
-suggests is like a reverse [`cons`](./bel.bel#:~:text=%20cons%20),
+Once we have [`append`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20append%20) it's easy to define [`snoc`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20snoc%20), which as its name
+suggests is like a reverse [`cons`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cons%20),
 
 ```
 > (snoc '(a b c) 'd 'e)
 (a b c d e)
 ```
 
-and [`list`](./bel.bel#:~:text=%20list%20), which returns a list of its arguments.
+and [`list`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20list%20), which returns a list of its arguments.
 
 ```
 > (list)
@@ -1353,12 +1353,12 @@ and it was called thus
 (apply list x)
 ```
 
-then the value that [`list`](./bel.bel#:~:text=%20list%20) returned would be the same list as `x` — not 
+then the value that [`list`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20list%20) returned would be the same list as `x` — not 
 merely a list with the same elements, but the same pair — meaning if
-we modified the value we got from [`list`](./bel.bel#:~:text=%20list%20), we'd also be modifying the 
+we modified the value we got from [`list`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20list%20), we'd also be modifying the 
 object up in the calling code.
 
-After [`list`](./bel.bel#:~:text=%20list%20) we see [`map`](./bel.bel#:~:text=%20map%20), which in the simplest case returns a list of
+After [`list`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20list%20) we see [`map`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20map%20), which in the simplest case returns a list of
 calling its first argument on each element of its second.
 
 ```
@@ -1366,7 +1366,7 @@ calling its first argument on each element of its second.
 (a c e)
 ```
 
-However, [`map`](./bel.bel#:~:text=%20map%20) can take any number of lists, and calls its first 
+However, [`map`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20map%20) can take any number of lists, and calls its first 
 argument on successive sets of elements from the others.
 
 ```
@@ -1381,7 +1381,7 @@ It stops as soon as one list runs out
 ((a . 1) (b . 2))
 ```
 
-Like [`append`](./bel.bel#:~:text=%20append%20), [`map`](./bel.bel#:~:text=%20map%20) is easier to understand if we start with a version 
+Like [`append`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20append%20), [`map`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20map%20) is easier to understand if we start with a version 
 that takes exactly two arguments.
 
 ```
@@ -1419,7 +1419,7 @@ list. That's what `map2` does, and not surprisingly, the code is the
 same as in `map2` except that `xs` becomes `(car ls)`.
 
 Finally in the general case we call `f` on all the first elements
-(which we collect using [`map`](./bel.bel#:~:text=%20map%20)) and [`cons`](./bel.bel#:~:text=%20cons%20) that onto [`map`](./bel.bel#:~:text=%20map%20) of `f` on all the 
+(which we collect using [`map`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20map%20)) and [`cons`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cons%20) that onto [`map`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20map%20) of `f` on all the 
 rests of the lists.
 
 Notice that map calls itself recursively in two ways: there is the
@@ -1428,13 +1428,13 @@ line. But in the preceding line we also use `(map car ls)` to collect
 the arguments for `f`. And that's why we need the single-list base 
 case. Without it, we'd get an infinite recursion.
 
-Next comes our first macro, [`fn`](./bel.bel#:~:text=%20fn%20). There are two concepts to explain 
+Next comes our first macro, [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20). There are two concepts to explain 
 first, though: macros and scope. 
 
 A macro is essentially a function that generates code. I would have 
-liked the first example of a macro to be something simpler, but [`fn`](./bel.bel#:~:text=%20fn%20)
+liked the first example of a macro to be something simpler, but [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20)
 is the one we need first. So I'll introduce macros using a simpler 
-macro that isn't part of Bel, then explain [`fn`](./bel.bel#:~:text=%20fn%20).
+macro that isn't part of Bel, then explain [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20).
 
 Here is a very simple macro:
 
@@ -1503,7 +1503,7 @@ but as
   `(cons nil ,x))
 ```
 
-Now let's work our way up to [`fn`](./bel.bel#:~:text=%20fn%20), starting with the following 
+Now let's work our way up to [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20), starting with the following 
 simplified version:
 
 ```
@@ -1526,7 +1526,7 @@ But if we don't need either of these things, the functions made by
 (a . b)
 ```
 
-All the extra complexity in the definition of [`fn`](./bel.bel#:~:text=%20fn%20) is to get those two 
+All the extra complexity in the definition of [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20) is to get those two 
 features, the local environment and a body of more than one 
 expression.
 
@@ -1593,9 +1593,9 @@ just lists after all.
 3
 ```
 
-The reason the definition of [`fn`](./bel.bel#:~:text=%20fn%20) expands into a call to [`list`](./bel.bel#:~:text=%20list%20) is so 
+The reason the definition of [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20) expands into a call to [`list`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20list%20) is so 
 that we can incorporate the local environment, which we get by 
-including `scope` in the arguments to [`list`](./bel.bel#:~:text=%20list%20).
+including `scope` in the arguments to [`list`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20list%20).
 
 Here's an example where we do this manually:
 
@@ -1620,11 +1620,11 @@ hand. So this is equivalent to the definition above:
   ((fn (y) (+ x y)) 2))
 ```
 
-The [`fn`](./bel.bel#:~:text=%20fn%20) macro has two different expansions depending on how many 
+The [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20) macro has two different expansions depending on how many 
 arguments we pass to it. That's so that functions can have bodies of
 more than one expression.
 
-If we call [`fn`](./bel.bel#:~:text=%20fn%20) with two arguments, meaning a parameter list and an
+If we call [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20) with two arguments, meaning a parameter list and an
 expression, as in e.g.
 
 ```
@@ -1637,7 +1637,7 @@ then `(cdr body)` will be false, so the expansion will be
 (list 'lit 'clo scope '(x) '(cons 'a x))
 ```
 
-If we call [`fn`](./bel.bel#:~:text=%20fn%20) with three or more arguments, meaning a parameter list 
+If we call [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20) with three or more arguments, meaning a parameter list 
 plus two or more expressions, e.g.
 
 ```
@@ -1646,13 +1646,13 @@ plus two or more expressions, e.g.
   (cons 'a x))
 ```
 
-Then the expansion wraps a [`do`](./bel.bel#:~:text=%20do%20) around the expressions.
+Then the expansion wraps a [`do`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20do%20) around the expressions.
 
 ```
 (list 'lit 'clo scope '(x) '(do (prn 'hello) (cons 'a x)))
 ```
 
-We haven't seen [`do`](./bel.bel#:~:text=%20do%20) yet, but it's coming soon. It makes multiple
+We haven't seen [`do`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20do%20) yet, but it's coming soon. It makes multiple
 expressions into a block of code. 
 
 Next comes something unusual: vmark is set to a newly created pair 
@@ -1661,14 +1661,14 @@ made by join. Missing arguments to primitives default to `nil`, so
 this, it's usually for the purpose of creating a fresh pair to mark 
 the identity of something.
 
-Any pair with [`vmark`](./bel.bel#:~:text=%20vmark%20) in its `car` is treated by Bel as a variable. The 
-next function, [`uvar`](./bel.bel#:~:text=%20uvar%20), thus returns a new, unique variable each time 
+Any pair with [`vmark`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20vmark%20) in its `car` is treated by Bel as a variable. The 
+next function, [`uvar`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20uvar%20), thus returns a new, unique variable each time 
 it's called. The reason we need such a thing is so that when we're
 manipulating user code, we can add variables without worrying they'll 
 accidentally share the names of variables created by users.
 
-Now we see the definition of [`do`](./bel.bel#:~:text=%20do%20), which we used in the expansion of 
-[`fn`](./bel.bel#:~:text=%20fn%20). The [`do`](./bel.bel#:~:text=%20do%20) macro uses nested function calls to represent blocks of 
+Now we see the definition of [`do`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20do%20), which we used in the expansion of 
+[`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20). The [`do`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20do%20) macro uses nested function calls to represent blocks of 
 code.
 
 Suppose you want to evaluate two expressions in order and then return
@@ -1706,7 +1706,7 @@ expressions:
 ((fn x ((fn x e3) e2)) e1)
 ```
 
-You can use [`reduce`](./bel.bel#:~:text=%20reduce%20) to generate this kind of expression as follows
+You can use [`reduce`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20reduce%20) to generate this kind of expression as follows
 
 ```
 (def block args
@@ -1718,20 +1718,20 @@ You can use [`reduce`](./bel.bel#:~:text=%20reduce%20) to generate this kind of 
 ((fn x ((fn x e3) e2)) e1)
 ```
 
-and this is almost exactly what the [`do`](./bel.bel#:~:text=%20do%20) macro does. If you look at
+and this is almost exactly what the [`do`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20do%20) macro does. If you look at
 its definition, it's almost identical to that of `block`. 
 
-One difference is that [`do`](./bel.bel#:~:text=%20do%20) is a macro rather than a function, which
+One difference is that [`do`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20do%20) is a macro rather than a function, which
 means that the nested call gets evaluated after it's generated.
 
-The other difference is that we call [`uvar`](./bel.bel#:~:text=%20uvar%20) to make the parameter 
+The other difference is that we call [`uvar`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20uvar%20) to make the parameter 
 instead of using `x`. We can't safely use any symbol as the parameter
 in case it occurs in one of the expressions in the do. Since we're 
 never going to look at the values passed in these function calls, we 
 don't care what parameter we use, so long as it's unique.
 
 If you want to establish a lexical binding for some variable, you do
-it with [`let`](./bel.bel#:~:text=%20let%20), which is a very simple macro upon [`fn`](./bel.bel#:~:text=%20fn%20).
+it with [`let`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20let%20), which is a very simple macro upon [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20).
 
 ```
 > (let x 'a 
@@ -1739,7 +1739,7 @@ it with [`let`](./bel.bel#:~:text=%20let%20), which is a very simple macro upon 
 (a . b)
 ```
 
-Since [`let`](./bel.bel#:~:text=%20let%20) expands into a [`fn`](./bel.bel#:~:text=%20fn%20), you have the full power of Bel parameter 
+Since [`let`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20let%20) expands into a [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20), you have the full power of Bel parameter 
 lists in the first argument.
 
 ```
@@ -1748,7 +1748,7 @@ lists in the first argument.
 (a (b c))
 ```
 
-The [`macro`](./bel.bel#:~:text=%20macro%20) macro is analogous to the [`fn`](./bel.bel#:~:text=%20fn%20) macro in that it returns a
+The [`macro`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20macro%20) macro is analogous to the [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20) macro in that it returns a
 literal macro. You'll rarely use these directly, but you could if you 
 wanted to.
 
@@ -1759,22 +1759,22 @@ a
 a
 ```
 
-Next we see the definition of [`def`](./bel.bel#:~:text=%20def%20) itself, which does nothing more
-than set its first argument to a [`fn`](./bel.bel#:~:text=%20fn%20) made using the rest of the
-arguments, and also of [`mac`](./bel.bel#:~:text=%20mac%20), which does the same with macro.
+Next we see the definition of [`def`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20def%20) itself, which does nothing more
+than set its first argument to a [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20) made using the rest of the
+arguments, and also of [`mac`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20mac%20), which does the same with macro.
 
 (I like it when I can define new operators as thin, almost trivial
 seeming layers on top of existing operators. It seems a sign of
 orthogonality.)
 
-If you were wondering why [`fn`](./bel.bel#:~:text=%20fn%20) needs two cases — why we don't just 
-always wrap a do around the body — the reason is that [`do`](./bel.bel#:~:text=%20do%20) calls 
-[`reduce`](./bel.bel#:~:text=%20reduce%20), which is defined using [`def`](./bel.bel#:~:text=%20def%20), which expands into a [`fn`](./bel.bel#:~:text=%20fn%20). So to 
-avoid an infinite recursion we either have to define [`reduce`](./bel.bel#:~:text=%20reduce%20) as a 
-literal function, or make either [`fn`](./bel.bel#:~:text=%20fn%20) or [`do`](./bel.bel#:~:text=%20do%20) consider the single 
-expression case, and making [`fn`](./bel.bel#:~:text=%20fn%20) do it was the least ugly.
+If you were wondering why [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20) needs two cases — why we don't just 
+always wrap a do around the body — the reason is that [`do`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20do%20) calls 
+[`reduce`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20reduce%20), which is defined using [`def`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20def%20), which expands into a [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20). So to 
+avoid an infinite recursion we either have to define [`reduce`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20reduce%20) as a 
+literal function, or make either [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20) or [`do`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20do%20) consider the single 
+expression case, and making [`fn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20fn%20) do it was the least ugly.
 
-Now that we have [`let`](./bel.bel#:~:text=%20let%20), we can define [`or`](./bel.bel#:~:text=mac%20or%20), which returns the first 
+Now that we have [`let`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20let%20), we can define [`or`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=mac%20or%20), which returns the first 
 non-nil value returned by one of its arguments. Like most ors in
 programming languages, it only evaluates as many arguments as it
 needs to, which means you can use it for control flow as well as
@@ -1785,8 +1785,8 @@ logical disjunction.
 a
 ```
 
-The definition of [`or`](./bel.bel#:~:text=mac%20or%20) is the first recursive macro definition we've
-seen. Unless it has no arguments, an [`or`](./bel.bel#:~:text=mac%20or%20) will expand into another [`or`](./bel.bel#:~:text=mac%20or%20).  
+The definition of [`or`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=mac%20or%20) is the first recursive macro definition we've
+seen. Unless it has no arguments, an [`or`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=mac%20or%20) will expand into another [`or`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=mac%20or%20).  
 This is fine so long as the recursion terminates, which this one 
 will because each time we look at the `cdr` of the list of arguments, 
 which will eventually be `nil`. (Though you could spoof or by 
@@ -1811,7 +1811,7 @@ expands into
 ```
 
 except that we can't actually use variables like `x` and `y` to hold the 
-values, and instead have to use [`uvar`](./bel.bel#:~:text=%20uvar%20)s.
+values, and instead have to use [`uvar`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20uvar%20)s.
 
 Notice incidentally that the expression above could be optimized
 
@@ -1822,12 +1822,12 @@ Notice incidentally that the expression above could be optimized
       bar))
 ```
 
-but the definition of [`or`](./bel.bel#:~:text=mac%20or%20) doesn't try to; like every definition in
+but the definition of [`or`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=mac%20or%20) doesn't try to; like every definition in
 Bel, its purpose is to define what or means, not to provide an 
 efficient implementation of it.
 
 In Bel, macros are `apply`able just like functions are, though if you
-do that you get only the logical aspect of [`or`](./bel.bel#:~:text=mac%20or%20) and not the control
+do that you get only the logical aspect of [`or`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=mac%20or%20) and not the control
 aspect, since in a call to apply the arguments have already all been
 evaluated.
 
@@ -1838,7 +1838,7 @@ nil
 a
 ```
 
-The [`and`](./bel.bel#:~:text=%20and%20) macro is similar in spirit to [`or`](./bel.bel#:~:text=mac%20or%20), but different in its 
+The [`and`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20and%20) macro is similar in spirit to [`or`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=mac%20or%20), but different in its 
 implementation. Whereas or uses recursion to generate its expansion, 
 and uses reduce. Since 
 
@@ -1854,10 +1854,10 @@ is equivalent to
 
 it's an obvious candidate for reduce. 
 
-Notice the function given to [`reduce`](./bel.bel#:~:text=%20reduce%20) has a single parameter. A 
+Notice the function given to [`reduce`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20reduce%20) has a single parameter. A 
 function given as the first argument to reduce will only ever be 
 called with two arguments, so usually such a function will have a 
-list of two parameters, but in this case we just want to [`cons`](./bel.bel#:~:text=%20cons%20) an [`if`](./bel.bel#:~:text=%20if%20) 
+list of two parameters, but in this case we just want to [`cons`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cons%20) an [`if`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20if%20) 
 onto the front of the arguments each time.
 
 The other interesting thing about and is what we do when it has no 
@@ -1865,7 +1865,7 @@ arguments. While we want `(or)` to return nil, we want `(and)` to return
 t. So in the second argument to reduce, we replace an empty args with 
 `(t)`.
 
-The next function, [`=`](./bel.bel#:~:text=%20=%20), is the one that programs usually use to test 
+The next function, [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20), is the one that programs usually use to test 
 for equality. It returns true iff its arguments are trees of the same 
 shape whose leaves are the same atoms.
 
@@ -1881,7 +1881,7 @@ pair. Numbers and strings are pairs, for example. So you'd never
 want to use id for comparison unless you were specifically looking
 for identical list structure.
 
-In the definition of [`=`](./bel.bel#:~:text=%20=%20) we see the first instance of square bracket
+In the definition of [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20) we see the first instance of square bracket
 notation. 
 
 ```
@@ -1897,7 +1897,7 @@ This is equivalent to
 
 I.e., is everything in the `cdr` of args `id` to the `car`? You know you
 can use `id` to test equality at this point, because if one of the args 
-is an atom, they all have to be for them to be [`=`](./bel.bel#:~:text=%20=%20), and you can use `id` 
+is an atom, they all have to be for them to be [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20), and you can use `id` 
 to test equality of atoms.
 
 If `id` took any number of arguments (it doesn't, because I want axioms
@@ -1908,12 +1908,12 @@ been simply
 (apply id args)
 ```
 
-The next four functions are predicates for the four types. All use [`=`](./bel.bel#:~:text=%20=%20) 
-for this test even though all could use `id`. My rule is to use [`=`](./bel.bel#:~:text=%20=%20)
+The next four functions are predicates for the four types. All use [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20) 
+for this test even though all could use `id`. My rule is to use [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20)
 unless I specifically need `id`. That way the appearance of `id` is a 
 signal that code is looking for identical structure.
 
-Then we see [`proper`](./bel.bel#:~:text=%20proper%20), which tells us whether something is a proper
+Then we see [`proper`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20proper%20), which tells us whether something is a proper
 list. Informally, a proper list is one that we don't need a dot to
 display.
 
@@ -1949,7 +1949,7 @@ nil
 "ar"
 ```
 
-Since it uses [`some`](./bel.bel#:~:text=%20some%20), it returns the rest of the list starting with the 
+Since it uses [`some`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20some%20), it returns the rest of the list starting with the 
 thing we're looking for, rather than simply `t`.
 
 In the definition of mem we see the first use of an optional 
@@ -1976,30 +1976,30 @@ use let:
 (f a b)
 ```
 
-In the definition of [`mem`](./bel.bel#:~:text=%20mem%20), the optional parameter is a comparison
-function, which defaults, as such functions usually will, to [`=`](./bel.bel#:~:text=%20=%20).
+In the definition of [`mem`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20mem%20), the optional parameter is a comparison
+function, which defaults, as such functions usually will, to [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20).
 By supplying different comparison functions we can get different 
-behaviors out of [`mem`](./bel.bel#:~:text=%20mem%20).
+behaviors out of [`mem`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20mem%20).
 
 ```
 > (mem 3 '(2 4 6 8) >)
 (4 6 8)
 ```
 
-The next function, [`in`](./bel.bel#:~:text=%20in%20), is effectively a generalization of [`=`](./bel.bel#:~:text=%20=%20). It 
-returns true iff its first argument is [`=`](./bel.bel#:~:text=%20=%20) to any of the rest.
+The next function, [`in`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20in%20), is effectively a generalization of [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20). It 
+returns true iff its first argument is [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20) to any of the rest.
 
-Then come three common combinations of `car` and `cdr`: [`cadr`](./bel.bel#:~:text=%20cadr%20), which gets 
-the second element of a list, [`cddr`](./bel.bel#:~:text=%20cddr%20), which takes two elements off the 
-front, and [`caddr`](./bel.bel#:~:text=%20caddr%20), which gets the third element. We'll have other ways 
+Then come three common combinations of `car` and `cdr`: [`cadr`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cadr%20), which gets 
+the second element of a list, [`cddr`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cddr%20), which takes two elements off the 
+front, and [`caddr`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20caddr%20), which gets the third element. We'll have other ways 
 to do these things once we've defined numbers.
 
-The [`case`](./bel.bel#:~:text=%20case%20) macro takes an initial expression `e`, followed by 
+The [`case`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20case%20) macro takes an initial expression `e`, followed by 
 alternating keys (which are implicitly quoted) and expressions, and 
 returns the result of evaluating the expression following the key 
-that's [`=`](./bel.bel#:~:text=%20=%20) to the value of `e`.  
+that's [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20) to the value of `e`.  
 
-If [`case`](./bel.bel#:~:text=%20case%20) is given an even number of arguments, the last one is the 
+If [`case`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20case%20) is given an even number of arguments, the last one is the 
 default. Otherwise the default is `nil`.
 
 E.g. this function 
@@ -2019,8 +2019,8 @@ returns the name of a sign represented by a symbol:
 plus
 ```
 
-The [`iflet`](./bel.bel#:~:text=%20iflet%20) macro lets you use the result of a test in an [`if`](./bel.bel#:~:text=%20if%20). It works 
-like an ordinary [`if`](./bel.bel#:~:text=%20if%20), except that it takes an initial variable, which
+The [`iflet`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20iflet%20) macro lets you use the result of a test in an [`if`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20if%20). It works 
+like an ordinary [`if`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20if%20), except that it takes an initial variable, which
 in any then expression will be lexically bound to the value returned 
 by the preceding test expression.
 
@@ -2031,11 +2031,11 @@ by the preceding test expression.
 a
 ```
 
-Notice how similar the definitions of [`case`](./bel.bel#:~:text=%20case%20) and [`iflet`](./bel.bel#:~:text=%20iflet%20) are, despite 
-their different purposes. They're both recursive macros, like [`or`](./bel.bel#:~:text=%20or%20), 
+Notice how similar the definitions of [`case`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20case%20) and [`iflet`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20iflet%20) are, despite 
+their different purposes. They're both recursive macros, like [`or`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20or%20), 
 and both work through their arguments two at a time.
 
-We use [`iflet`](./bel.bel#:~:text=%20iflet%20) to define [`aif`](./bel.bel#:~:text=%20aif%20), which implicitly binds the variable `it`
+We use [`iflet`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20iflet%20) to define [`aif`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20aif%20), which implicitly binds the variable `it`
 to the value of the preceding test expression.
 
 ```
@@ -2045,10 +2045,10 @@ to the value of the preceding test expression.
 (nil c e nil)
 ```
 
-The function given to [`map`](./bel.bel#:~:text=%20map%20) here tests whether x has a non-nil cdr, 
+The function given to [`map`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20map%20) here tests whether x has a non-nil cdr, 
 and if so returns the car of `it`.
 
-With [`aif`](./bel.bel#:~:text=%20aif%20) and [`some`](./bel.bel#:~:text=%20some%20), it's trivial to define [`find`](./bel.bel#:~:text=%20find%20), which returns the
+With [`aif`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20aif%20) and [`some`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20some%20), it's trivial to define [`find`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20find%20), which returns the
 first element of a list that matches some test.
 
 ```
@@ -2057,7 +2057,7 @@ first element of a list that matches some test.
 "apple"
 ```
 
-The [`begins`](./bel.bel#:~:text=%20begins%20) function returns true iff its first argument is a list 
+The [`begins`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20begins%20) function returns true iff its first argument is a list 
 that begins with its second argument:
 
 ```
@@ -2065,10 +2065,10 @@ that begins with its second argument:
 t
 ```
 
-Like [`mem`](./bel.bel#:~:text=%20mem%20), it takes an optional comparison function that defaults 
-to [`=`](./bel.bel#:~:text=%20=%20).
+Like [`mem`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20mem%20), it takes an optional comparison function that defaults 
+to [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20).
 
-It's used in [`caris`](./bel.bel#:~:text=%20caris%20), which returns true iff its first argument is a 
+It's used in [`caris`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20caris%20), which returns true iff its first argument is a 
 pair whose car is its second.
 
 ```
@@ -2080,7 +2080,7 @@ This is one of those functions you end up using surprisingly often,
 because it's so common for the car of a list to have some special 
 significance.
 
-Our next function, [`hug`](./bel.bel#:~:text=%20hug%20), applies a function to pairs of elements of a 
+Our next function, [`hug`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20hug%20), applies a function to pairs of elements of a 
 list. Since the default function is list, by default it simply 
 returns pairs of elements.
 
@@ -2093,9 +2093,9 @@ returns pairs of elements.
 
 This too is something you need surprisingly often, especially when 
 operating on expressions, where it's common to have subexpressions 
-that form implicit pairs. We've seen this already in [`if`](./bel.bel#:~:text=%20if%20), [`case`](./bel.bel#:~:text=%20case%20), and 
-[`iflet`](./bel.bel#:~:text=%20iflet%20), and we see it implemented with [`hug`](./bel.bel#:~:text=%20hug%20) in the next macro, [`with`](./bel.bel#:~:text=%20with%20), 
-which is a multi-variable [`let`](./bel.bel#:~:text=%20let%20).
+that form implicit pairs. We've seen this already in [`if`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20if%20), [`case`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20case%20), and 
+[`iflet`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20iflet%20), and we see it implemented with [`hug`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20hug%20) in the next macro, [`with`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20with%20), 
+which is a multi-variable [`let`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20let%20).
 
 ```
 > (with (x 'a 
@@ -2116,7 +2116,7 @@ values of later ones.
 a
 ```
 
-The next function, [`keep`](./bel.bel#:~:text=%20keep%20), returns all the elements of a list that pass 
+The next function, [`keep`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20keep%20), returns all the elements of a list that pass 
 some test
 
 ```
@@ -2124,7 +2124,7 @@ some test
 (1 3 5)
 ```
 
-and [`rem`](./bel.bel#:~:text=%20rem%20) removes its first argument from a list
+and [`rem`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20rem%20) removes its first argument from a list
 
 ```
 > (rem \a "abracadabra")
@@ -2140,7 +2140,7 @@ argument.
 (3 1 2)
 ```
 
-The next two functions, [`get`](./bel.bel#:~:text=%20get%20) and [`put`](./bel.bel#:~:text=%20put%20), are for operating on key-value
+The next two functions, [`get`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20get%20) and [`put`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20put%20), are for operating on key-value
 stores represented as lists of pairs like this one:
 
 ```
@@ -2148,7 +2148,7 @@ stores represented as lists of pairs like this one:
 ((a . 1) (b . 2) (c . 3))
 ```
 
-The first, [`get`](./bel.bel#:~:text=%20get%20), retrieves entries,
+The first, [`get`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20get%20), retrieves entries,
 
 ```
 > (get 'a x)
@@ -2157,7 +2157,7 @@ The first, [`get`](./bel.bel#:~:text=%20get%20), retrieves entries,
 nil
 ```
 
-and the second, [`put`](./bel.bel#:~:text=%20put%20), creates them.
+and the second, [`put`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20put%20), creates them.
 
 ```
 > (put 'z 26 x)
@@ -2166,21 +2166,21 @@ and the second, [`put`](./bel.bel#:~:text=%20put%20), creates them.
 ((a . 9) (b . 2) (c . 3))
 ```
 
-The reason [`get`](./bel.bel#:~:text=%20get%20) returns the whole pair instead of just the associated
+The reason [`get`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20get%20) returns the whole pair instead of just the associated
 value is so that we can distinguish between a key having a value of 
 `nil` and having no value.
 
-Notice that [`put`](./bel.bel#:~:text=%20put%20) doesn't change the value of `x`, just as [`cons`](./bel.bel#:~:text=%20cons%20)ing 
+Notice that [`put`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20put%20) doesn't change the value of `x`, just as [`cons`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20cons%20)ing 
 something onto `x` wouldn't change the value of it. 
 
-The function [`rev`](./bel.bel#:~:text=%20rev%20) reverses a list,
+The function [`rev`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20rev%20) reverses a list,
 
 ```
 > (rev "able")
 "elba"
 ```
 
-and [`snap`](./bel.bel#:~:text=%20snap%20) breaks off a piece of its second argument that's as long as
+and [`snap`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20snap%20) breaks off a piece of its second argument that's as long as
 its first, returning both parts:
 
 ```
@@ -2188,7 +2188,7 @@ its first, returning both parts:
 ((1 2) (3 4 5))
 ```
 
-It's used in [`udrop`](./bel.bel#:~:text=%20udrop%20) (for "unary drop"), which returns just the 
+It's used in [`udrop`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20udrop%20) (for "unary drop"), which returns just the 
 remaining part:
 
 ```
@@ -2196,7 +2196,7 @@ remaining part:
 (3 4 5)
 ```
 
-Then we get the identity function, [`idfn`](./bel.bel#:~:text=%20idfn%20):
+Then we get the identity function, [`idfn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20idfn%20):
 
 ```
 > (map idfn '(a b c))
@@ -2206,7 +2206,7 @@ Then we get the identity function, [`idfn`](./bel.bel#:~:text=%20idfn%20):
 You wouldn't call this directly (why bother?) but you often end up
 using it as a default or when operating on functions.
 
-The function [`is`](./bel.bel#:~:text=%20is%20) is a little unusual in that it returns a function for
+The function [`is`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20is%20) is a little unusual in that it returns a function for
 comparing its argument to something. 
 
 ```
@@ -2214,12 +2214,12 @@ comparing its argument to something.
 t
 ```
 
-An [`is`](./bel.bel#:~:text=%20is%20) is a partially applied [`=`](./bel.bel#:~:text=%20=%20), so in principle we won't need it 
+An [`is`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20is%20) is a partially applied [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20), so in principle we won't need it 
 after we define partial application later on. But this case is so
 common that it's convenient to have a separate operator for it.
 
-Now come several macros for dealing with errors. The first, [`eif`](./bel.bel#:~:text=%20eif%20),
-introduces several new concepts, so I'll explain them first, then [`eif`](./bel.bel#:~:text=%20eif%20) 
+Now come several macros for dealing with errors. The first, [`eif`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20eif%20),
+introduces several new concepts, so I'll explain them first, then [`eif`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20eif%20) 
 itself.
 
 One thing we see being used for the first time here is dynamic 
@@ -2232,7 +2232,7 @@ a variable with no global value:
 ```
 
 If we call foo normally, we'll get an error saying `snerg` has no 
-value. But if we call `foo` within a [`dyn`](./bel.bel#:~:text=%20dyn%20) expression that creates a
+value. But if we call `foo` within a [`dyn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20dyn%20) expression that creates a
 dynamic binding for `snerg`, it will work:
 
 ```
@@ -2248,9 +2248,9 @@ We couldn't get the same result by saying
   (foo))
 ```
 
-because a lexical binding created by [`let`](./bel.bel#:~:text=%20let%20) (or more precisely by a
+because a lexical binding created by [`let`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20let%20) (or more precisely by a
 function call) is only visible within its body. And whereas lexical 
-bindings get saved in closures (as in e.g. [`is`](./bel.bel#:~:text=%20is%20)), dynamic bindings, 
+bindings get saved in closures (as in e.g. [`is`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20is%20)), dynamic bindings, 
 like global ones, don't.
 
 Another concept we're seeing for the first time is that of a 
@@ -2259,7 +2259,7 @@ of happening. (Or more prosaically, it's a copy of the stack.) A
 continuation is callable, like a function, and if you call one, you 
 restart the computation where it was created.
 
-You can get your hands on the current continuation by calling the [`ccc`](./bel.bel#:~:text=%20ccc%20) 
+You can get your hands on the current continuation by calling the [`ccc`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20ccc%20) 
 special form with a function of one argument. It will be the current 
 continuation, which you can then save. Let's try making one.
 
@@ -2281,9 +2281,9 @@ current continuation before returning b:
 ```
 
 It returns the same value, but in the process we've set cont to the
-continuation at the point where the [`ccc`](./bel.bel#:~:text=%20ccc%20) occurred. If we call `cont` 
+continuation at the point where the [`ccc`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20ccc%20) occurred. If we call `cont` 
 with some value, our old computation will be restarted as if that 
-value had been returned by the [`ccc`](./bel.bel#:~:text=%20ccc%20) expression:
+value had been returned by the [`ccc`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20ccc%20) expression:
 
 ```
 > (cont 'z)
@@ -2336,7 +2336,7 @@ This time the car expression does get evaluated, which causes an
 error to be signalled. But by establishing a dynamic binding for
 err, we've ensured that it's our function that gets called when the
 error is signalled. And our function simply returns `hello` from the 
-[`ccc`](./bel.bel#:~:text=%20ccc%20) expression. 
+[`ccc`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20ccc%20) expression. 
 
 You can probably imagine how you'd write a macro to evaluate an 
 expression in an error-proof way: just make the expansion put the
@@ -2348,9 +2348,9 @@ expression within something like
          expression)))
 ```
 
-except of course you'd want to use a [`uvar`](./bel.bel#:~:text=%20uvar%20) instead of `c`.
+except of course you'd want to use a [`uvar`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20uvar%20) instead of `c`.
 
-Now let's look at [`eif`](./bel.bel#:~:text=%20eif%20). It's like if except that which of its 
+Now let's look at [`eif`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20eif%20). It's like if except that which of its 
 arguments get evaluated depends not on whether its test expression
 returns true, but whether it causes an error.
 
@@ -2369,7 +2369,7 @@ The variable before the test expression (in this case `x`) will be
 lexically bound either to the value returned by the test expression, 
 or to whatever err was called with if an error occurred.
 
-The expansion of the first [`eif`](./bel.bel#:~:text=%20eif%20) above looks like
+The expansion of the first [`eif`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20eif%20) above looks like
 
 ```
 (let v (join)
@@ -2381,23 +2381,23 @@ The expansion of the first [`eif`](./bel.bel#:~:text=%20eif%20) above looks like
 ```
 
 except of course `v`, `w`, and `c` will be uvars. When we look at the code
-above, we can see how [`eif`](./bel.bel#:~:text=%20eif%20) tells whether the value it got back from 
+above, we can see how [`eif`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20eif%20) tells whether the value it got back from 
 the test expression represents an error or not. The variable `v` is 
 bound to a newly created pair. Within the continuation, `err` is bound 
 to a function that returns `v` consed onto whatever `err` was called 
 with. So to decide which of the two succeeding expressions to
 evaluate, we just check whether the `car` of `w` is `v`. (And of course we 
-check using `id`, not [`=`](./bel.bel#:~:text=%20=%20).)
+check using `id`, not [`=`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20=%20).)
 
-The [`eif`](./bel.bel#:~:text=%20eif%20) macro is the most general error-catching macro, but there
-are two more, [`onerr`](./bel.bel#:~:text=%20onerr%20) and [`safe`](./bel.bel#:~:text=%20safe%20), that are more commonly used. The
-[`onerr`](./bel.bel#:~:text=%20onerr%20) macro takes two expressions and returns the value of the first
+The [`eif`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20eif%20) macro is the most general error-catching macro, but there
+are two more, [`onerr`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20onerr%20) and [`safe`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20safe%20), that are more commonly used. The
+[`onerr`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20onerr%20) macro takes two expressions and returns the value of the first
 if the second causes an error:
 
 > (onerr 'oops (car 'a))
 oops
 
-and the [`safe`](./bel.bel#:~:text=%20safe%20) macro simply returns `nil` if the expression within
+and the [`safe`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20safe%20) macro simply returns `nil` if the expression within
 it causes an error:
 
 ```
@@ -2407,7 +2407,7 @@ a
 nil
 ```
 
-The next function, [`literal`](./bel.bel#:~:text=%20literal%20), returns true iff its argument evaluates 
+The next function, [`literal`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20literal%20), returns true iff its argument evaluates 
 to itself,
 
 ```
@@ -2415,16 +2415,16 @@ to itself,
 (t t t)
 ```
 
-while [`variable`](./bel.bel#:~:text=%20variable%20) returns true iff its argument is a variable, meaning
-an ordinary symbol or a [`uvar`](./bel.bel#:~:text=%20uvar%20):
+while [`variable`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20variable%20) returns true iff its argument is a variable, meaning
+an ordinary symbol or a [`uvar`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20uvar%20):
 
 ```
 > (map variable (list 'x (uvar) t))
 (t t nil)
 ```
 
-And [`isa`](./bel.bel#:~:text=%20isa%20) is for checking whether something is a particular kind of 
-`lit`. Like [`is`](./bel.bel#:~:text=%20is%20), [`isa`](./bel.bel#:~:text=%20isa%20) doesn't do the check, but returns a function that
+And [`isa`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20isa%20) is for checking whether something is a particular kind of 
+`lit`. Like [`is`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20is%20), [`isa`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20isa%20) doesn't do the check, but returns a function that
 does
 
 ```
@@ -2432,7 +2432,7 @@ does
 t
 ```
 
-## Interpreter
+# Interpreter
 
 The operators we've defined so far, together with the axioms, will 
 now enable us to define a function that acts as a Bel interpreter: a 
@@ -2481,37 +2481,37 @@ where `s` is the current expression stack, `r` is the current return
 value stack, and `m` is a list `(p g)` of the other threads and the 
 global bindings.
 
-The interpreter itself begins with the function [`bel`](./bel.bel#:~:text=def%20bel%20), which takes an 
-expression `e` and [starts the interpreter](./bel.bel#:~:text=%28ev%20) running with a [single thread](./bel.bel#:~:text=%28list%20nil%20g%29) 
-in which [`e` is to be evaluated](./bel.bel#:~:text=%28list%20e%20nil%29). The arguments it sends to ev represent 
+The interpreter itself begins with the function [`bel`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=def%20bel%20), which takes an 
+expression `e` and [starts the interpreter](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28ev%20) running with a [single thread](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28list%20nil%20g%29) 
+in which [`e` is to be evaluated](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28list%20e%20nil%29). The arguments it sends to ev represent 
 the usual `(s r m)` triple. So 
 
 ```
 (list (list e nil))
 ```
 
-is an [expression stack containing nothing except `e`](./bel.bel#:~:text=%28list%20%28list%20e%20nil%29%29), to be [evaluated 
-in a null environment](./bel.bel#:~:text=e%20nil%29%29). The second argument, `nil`, is the return value 
+is an [expression stack containing nothing except `e`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28list%20%28list%20e%20nil%29%29), to be [evaluated 
+in a null environment](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=e%20nil%29%29). The second argument, `nil`, is the return value 
 stack, which is empty because we're not returning from anything. And 
-the [third argument is `m`](./bel.bel#:~:text=%28list%20nil%20g%29), aka `(p g)`, a [list of the other threads](./bel.bel#:~:text=%28list%20nil%20) 
-(currently `nil`) and an [environment to use as the global bindings](./bel.bel#:~:text=g%29%29%29).
+the [third argument is `m`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28list%20nil%20g%29), aka `(p g)`, a [list of the other threads](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28list%20nil%20) 
+(currently `nil`) and an [environment to use as the global bindings](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=g%29%29%29).
 
-If we jump ahead a few definitions to [`ev`](./bel.bel#:~:text=%20ev%20), we come to the core of the 
+If we jump ahead a few definitions to [`ev`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20ev%20), we come to the core of the 
 interpreter. This function plays the role `eval` did in McCarthy's 
 Lisp. Its parameters implicitly pull an `(e a)` expression-environment 
 pair off the expression stack. There are only five things the 
 expression can be:
 
-1. [A literal](./bel.bel#:~:text=aif%20%28literal%20e%29), in which case we [return it](./bel.bel#:~:text=%28mev%20s%20%28cons%20e%20r%29%20m%29).
+1. [A literal](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=aif%20%28literal%20e%29), in which case we [return it](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28mev%20s%20%28cons%20e%20r%29%20m%29).
 
-2. [A variable](./bel.bel#:~:text=%28variable%20e%29), in which case we call [`vref`](./bel.bel#:~:text=%20vref%20) to look up its value.
+2. [A variable](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28variable%20e%29), in which case we call [`vref`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20vref%20) to look up its value.
 
-3. [An improper list](./bel.bel#:~:text=%28no%20%28proper%20e%29%29), in which case we [signal an error](./bel.bel#:~:text=%28sigerr%20%27malformed%20s%20r%20m%29).
+3. [An improper list](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28no%20%28proper%20e%29%29), in which case we [signal an error](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28sigerr%20%27malformed%20s%20r%20m%29).
 
-4. [A list beginning with a special form](./bel.bel#:~:text=%28get%20%28car%20e%29%20forms%20id%29), in which case we [call the 
-   associated function stored in forms](./bel.bel#:~:text=%28%28cdr%20it%29%20%28cdr%20e%29%20a%20s%20r%20m%29).
+4. [A list beginning with a special form](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28get%20%28car%20e%29%20forms%20id%29), in which case we [call the 
+   associated function stored in forms](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28%28cdr%20it%29%20%28cdr%20e%29%20a%20s%20r%20m%29).
 
-5. An ordinary call, in which case we call [`evcall`](./bel.bel#:~:text=%20evcall%20) on it.
+5. An ordinary call, in which case we call [`evcall`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20evcall%20) on it.
 
 I'm going to follow the trail of evaluating a literal to explain some 
 things about how evaluation works, then come back and examine the 
@@ -2521,9 +2521,9 @@ One of the most important things to understand about the
 interpreter is that it never returns a value till it terminates. 
 The way it implements returning a value in the program it's
 evaluating is not by returning a value itself, but by a [recursive 
-call to the interpreter](./bel.bel#:~:text=%28mev%20s%20%28cons%20e%20r%29%20m%29) with a [shorter expression stack](./bel.bel#:~:text=%28%28e%20a%29%20.%20s%29) and the 
-[return value `cons`ed onto the return stack](./bel.bel#:~:text=%28cons%20e%20r%29). And that's what we see 
-happening in the [code that runs when `e` is a literal](./bel.bel#:~:text=%28mev%20s%20%28cons%20e%20r%29%20m%29):
+call to the interpreter](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28mev%20s%20%28cons%20e%20r%29%20m%29) with a [shorter expression stack](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28%28e%20a%29%20.%20s%29) and the 
+[return value `cons`ed onto the return stack](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28cons%20e%20r%29). And that's what we see 
+happening in the [code that runs when `e` is a literal](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28mev%20s%20%28cons%20e%20r%29%20m%29):
 
 ```
 (mev s (cons e r) m)
@@ -2531,16 +2531,16 @@ happening in the [code that runs when `e` is a literal](./bel.bel#:~:text=%28mev
 
 That is what returning a value looks like.
 
-The function [`mev`](./bel.bel#:~:text=%20mev%20) (`m` = multi-threaded) is what the interpreter calls 
+The function [`mev`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20mev%20) (`m` = multi-threaded) is what the interpreter calls 
 to continue evaluation after doing something. Its purpose is to check 
 whether interpretation should terminate, and if not, to allow another 
 thread to run.
 
-The first thing [`mev`](./bel.bel#:~:text=%20mev%20) does is [check if the current thread has run out 
-of work to do](./bel.bel#:~:text=if%20%28no%20s%29). If so, if `s` is `nil`, it [checks whether there are other 
-threads in `p`](./bel.bel#:~:text=if%20p). If there are, it [calls `sched` to run one](./bel.bel#:~:text=%28sched%20p%20g%29). If not, if 
+The first thing [`mev`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20mev%20) does is [check if the current thread has run out 
+of work to do](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=if%20%28no%20s%29). If so, if `s` is `nil`, it [checks whether there are other 
+threads in `p`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=if%20p). If there are, it [calls `sched` to run one](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28sched%20p%20g%29). If not, if 
 this is the only thread and we've just finished it, then it [returns 
-whatever's on top of the return value stack](./bel.bel#:~:text=%28car%20r%29) as the value of calling 
+whatever's on top of the return value stack](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28car%20r%29) as the value of calling 
 the interpreter.
 
 If we haven't finished the current expression stack, then we have to 
@@ -2550,13 +2550,13 @@ sometimes you can't, if you're doing something that requires multiple
 steps to complete, and in the middle is in an inconsistent state. 
 
 The way a program signals that it doesn't want to be interrupted is 
-by dynamically [binding `lock` to a non-nil value](./bel.bel#:~:text=bind%20lock%20). If [`lock` is on](./bel.bel#:~:text=%28cdr%20%28binding%20%27lock%20s%29%29), we [put 
-the current thread on the front of the list of threads](./bel.bel#:~:text=%28cons%20%28list%20s%20r%29%20p%29), and if not we 
-[put it on the end](./bel.bel#:~:text=%28snoc%20p%20%28list%20s%20r%29%29). Since [`sched`](./bel.bel#:~:text=%20sched%20) always runs the [first thread](./bel.bel#:~:text=%28s%20r%29) on the 
-list, if we [keep the current thread on the front](./bel.bel#:~:text=%28cons%20%28list%20s%20r%29%20p%29), it [keeps running](./bel.bel#:~:text=%28ev%20s%20r%20%28list%20p%20g%29%29).
+by dynamically [binding `lock` to a non-nil value](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=bind%20lock%20). If [`lock` is on](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28cdr%20%28binding%20%27lock%20s%29%29), we [put 
+the current thread on the front of the list of threads](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28cons%20%28list%20s%20r%29%20p%29), and if not we 
+[put it on the end](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28snoc%20p%20%28list%20s%20r%29%29). Since [`sched`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20sched%20) always runs the [first thread](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28s%20r%29) on the 
+list, if we [keep the current thread on the front](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28cons%20%28list%20s%20r%29%20p%29), it [keeps running](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28ev%20s%20r%20%28list%20p%20g%29%29).
 
-Now that we've seen how [`mev`](./bel.bel#:~:text=%20mev%20) and [`sched`](./bel.bel#:~:text=%20sched%20) work, let's return to [`ev`](./bel.bel#:~:text=%20ev%20). If [`e` 
-is a variable](./bel.bel#:~:text=%28variable%20e%29), we [call `vref` to evaluate it](./bel.bel#:~:text=%28vref%20e%20a%20s%20r%20m%29). And what [`vref`](./bel.bel#:~:text=%20vref%20) ordinarily 
+Now that we've seen how [`mev`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20mev%20) and [`sched`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20sched%20) work, let's return to [`ev`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20ev%20). If [`e` 
+is a variable](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28variable%20e%29), we [call `vref` to evaluate it](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28vref%20e%20a%20s%20r%20m%29). And what [`vref`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20vref%20) ordinarily 
 does is this:
 
 ```
@@ -2565,29 +2565,29 @@ does is this:
      (sigerr 'unbound s r m))
 ```
 
-You may now recognize that kind of call to [`mev`](./bel.bel#:~:text=%20mev%20): that's returning a 
-value. [If the lookup succeeds](./bel.bel#:~:text=aif%20%28lookup%20v%20a%20s%20g%29), it returns the `(var . val)` pair it 
-found, so the [value is the `cdr` of it](./bel.bel#:~:text=%28cons%20%28cdr%20it%29%20r%29). If lookup fails, it returns 
+You may now recognize that kind of call to [`mev`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20mev%20): that's returning a 
+value. [If the lookup succeeds](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=aif%20%28lookup%20v%20a%20s%20g%29), it returns the `(var . val)` pair it 
+found, so the [value is the `cdr` of it](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28cons%20%28cdr%20it%29%20r%29). If lookup fails, it returns 
 `nil`, in which case we've just encountered a reference to an unbound 
-variable, and we should [signal an error](./bel.bel#:~:text=%28sigerr%20%28list%20%27unboundb%20v%29%20s%20r%20m%29).
+variable, and we should [signal an error](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28sigerr%20%28list%20%27unboundb%20v%29%20s%20r%20m%29).
 
-Let's skip down to [`lookup`](./bel.bel#:~:text=%20lookup%20) and see what it does. It checks, in order, 
-whether the variable has a [dynamic binding](./bel.bel#:~:text=%28binding%20e%20s%29), a [lexical binding](./bel.bel#:~:text=%28get%20e%20a%20id%29), or a 
-[global binding](./bel.bel#:~:text=%28get%20e%20g%20id%29). At the end there are special cases for the two 
-variables [`globe`](./bel.bel#:~:text=globe%20%28cons%20e%20g%29) and [`scope`](./bel.bel#:~:text=scope%20%28cons%20e%20a%29); for them the interpreter simply "leaks" 
+Let's skip down to [`lookup`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20lookup%20) and see what it does. It checks, in order, 
+whether the variable has a [dynamic binding](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28binding%20e%20s%29), a [lexical binding](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28get%20e%20a%20id%29), or a 
+[global binding](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28get%20e%20g%20id%29). At the end there are special cases for the two 
+variables [`globe`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=globe%20%28cons%20e%20g%29) and [`scope`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=scope%20%28cons%20e%20a%29); for them the interpreter simply "leaks" 
 the corresponding parameter. Leak is an apt metaphor in this 
 situation because data is going from one layer of Bel to another: 
 from the interpreter running in Bel to the Bel program it's 
 evaluating.
 
-We use [`binding`](./bel.bel#:~:text=%20binding%20) to check whether a variable has a dynamic binding. It
-checks by [searching the expression stack](./bel.bel#:~:text=%28map%20car%20s%29) looking for [an entry binding 
-that variable](./bel.bel#:~:text=%5Bbegins%20_%20%28list%20smark%20%27bind%29%20id%5D). As we'll see when we get to its definition, [`dyn`](./bel.bel#:~:text=%20dyn%20) works 
-by [inserting a special entry on the expression stack](./bel.bel#:~:text=%28list%20smark%20%27bind%20%28cons%20v%20%28car%20r%29%29%29) listing the 
-[variable it wants to bind](./bel.bel#:~:text=%27bind%20%28cons%20v%20) and its [value](./bel.bel#:~:text=%28car%20r%29%29%29). [There](./bel.bel#:~:text=%28list%20smark%20%27fut%20%28fn%20%2C%40args%29%29) [are](./bel.bel#:~:text=%28list%20smark%20%27loc%20new%29) [other](./bel.bel#:~:text=%28list%20smark%20%27prot%20e2%29) operators 
+We use [`binding`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20binding%20) to check whether a variable has a dynamic binding. It
+checks by [searching the expression stack](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28map%20car%20s%29) looking for [an entry binding 
+that variable](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%5Bbegins%20_%20%28list%20smark%20%27bind%29%20id%5D). As we'll see when we get to its definition, [`dyn`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20dyn%20) works 
+by [inserting a special entry on the expression stack](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28list%20smark%20%27bind%20%28cons%20v%20%28car%20r%29%29%29) listing the 
+[variable it wants to bind](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%27bind%20%28cons%20v%20) and its [value](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28car%20r%29%29%29). [There](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28list%20smark%20%27fut%20%28fn%20%2C%40args%29%29) [are](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28list%20smark%20%27loc%20new%29) [other](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%28list%20smark%20%27prot%20e2%29) operators 
 that insert special entries on the expression stack too. These 
 entries are distinguishable from ordinary expressions by beginning 
-with a pair called [`smark`](./bel.bel#:~:text=%20smark%20).
+with a pair called [`smark`](https://sep.yimg.com/ty/cdn/paulgraham/bel.bel#:~:text=%20smark%20).
 
 While we're here, let's look at `sigerr`. This is how the interpreter
 signals an error. As we saw earlier in the examples of continuations,
