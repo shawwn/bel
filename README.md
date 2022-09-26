@@ -2432,6 +2432,8 @@ does
 t
 ```
 
+## Interpreter
+
 The operators we've defined so far, together with the axioms, will 
 now enable us to define a function that acts as a Bel interpreter: a 
 function that will take any Bel expression as an argument and 
